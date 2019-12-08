@@ -6,14 +6,19 @@ namespace _1_Game.Enemies
 {
     public abstract class Enemy : IMovable
     {
-        public Point Point { get; set; }
-        public int DamageValue { get; set; }
+        public Point Point {get; set; }
+        public abstract int DamageValue { get; protected set; }
    
-        private event MoveStateHandler Moving;
+        public event MoveStateHandler Moving;
 
         protected void BaseClassEvent(MoveEventArgs e)
         {
             Moving?.Invoke(this, e);
+        }
+
+        public Enemy()
+        {
+
         }
 
         /// <summary>Конструктор класса с координатами</summary>
@@ -26,7 +31,6 @@ namespace _1_Game.Enemies
         public void SetDamage(Player p)
         {
             p.Health -= DamageValue;
-
         }
 
         public virtual void Move()

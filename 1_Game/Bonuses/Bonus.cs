@@ -10,19 +10,22 @@ namespace _1_Game.Bonuses
         public Point Point { get; set; }
 
         /// <summary>Величина бонуса</summary>
-        public int HelpValue { get; set; } //величина бонуса
+        public abstract int HelpValue { get; protected set; } 
 
         /// <summary>Используйте для изменения свойства у бонуса</summary>
-        public abstract void ChangeBonus();
+        protected abstract void ChangeBonus();
 
         /// <summary>Применение значения бонуса</summary>
         public abstract void ApplyBonus(Player p);
 
-        public Bonus(Point p)
+        public Bonus()
         {
-
+            ChangeBonus();
         }
 
-
+        public Bonus(Point p)
+        {
+            ChangeBonus();
+        }
     }
 }

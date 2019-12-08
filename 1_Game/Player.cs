@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1_Game.Materials;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,11 +13,32 @@ namespace _1_Game
 
         public event MoveStateHandler Moving;
 
+        public Player()
+        {
+        }
+
+
         public void Move()
         {
-            //оповестить всех подписавшихся, что игрок изменил позицию
-            Moving?.Invoke(this,new MoveEventArgs("Игрок переместился!"));
-            throw new NotImplementedException();
+
+            if (GameField.CheckMaterial(Point) is Water)
+            {
+                Moving?.Invoke(this, new MoveEventArgs("Не могу плавать!", Point));
+            }
+
+            if (GameField.CheckMaterial(Point) is Road)
+            {
+                Moving?.Invoke(this, new MoveEventArgs("Нахожусь на дороге", Point));
+            }
+
+            if (GameField.CheckMaterial(Point) is Grass)
+            {
+                Moving?.Invoke(this, new MoveEventArgs("Нахожусь на траве", Point));
+            }
+
+            else
+            {
+            }
         }
     }
 }

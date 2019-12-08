@@ -693,11 +693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GIT\\1_Game\\1_Game\\1_Game.csproj",
+      "projectUniqueName": "F:\\!PROJ\\GIT\\1_Game\\1_Game\\1_Game.csproj",
       "projectName": "1_Game",
-      "projectPath": "D:\\GIT\\1_Game\\1_Game\\1_Game.csproj",
+      "projectPath": "F:\\!PROJ\\GIT\\1_Game\\1_Game\\1_Game.csproj",
       "packagesPath": "C:\\Users\\Администратор\\.nuget\\packages\\",
-      "outputPath": "D:\\GIT\\1_Game\\1_Game\\obj\\",
+      "outputPath": "F:\\!PROJ\\GIT\\1_Game\\1_Game\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -1,4 +1,5 @@
-﻿using _1_Game.Enemies;
+﻿using _1_Game.Bonuses;
+using _1_Game.Enemies;
 using System;
 
 namespace _1_Game
@@ -9,15 +10,23 @@ namespace _1_Game
         {
             Console.WriteLine("Hello World!");
             Console.ReadKey();
-            Dragon d = new Dragon(new Point(1,1));
+            Apple a = new Apple();
+            Console.WriteLine(a.HelpValue);
+
+
+            Dragon d = new Dragon();
             Console.WriteLine(d.DamageValue);
             d.Moving += D_Moving;
             d.Move();
 
-            Wolf w = new Wolf(new Point(1, 1));
+            Wolf w = new Wolf();
             w.Moving += D_Moving;
             Console.WriteLine(w.DamageValue) ;
             w.Move();
+            Console.WriteLine(a.HelpValue);
+
+
+
         }
 
         private static void D_Moving(object sender, MoveEventArgs e)

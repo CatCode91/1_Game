@@ -8,8 +8,12 @@ namespace _1_Game
 
     public class MoveEventArgs
     {
+
         public string Message { get; private set; }
-        public Point p { get; private set; }
+        /// <summary>
+        /// Содержит координаты
+        /// </summary>
+        public Point Point { get; private set; }
 
         /// <summary>
         /// Используйте для прикрепления текстового сообщения
@@ -28,7 +32,7 @@ namespace _1_Game
         public MoveEventArgs(string _mes, Point _p)
         {
             Message = _mes;
-            p = _p;
+            Point = _p;
         }
     }
 }

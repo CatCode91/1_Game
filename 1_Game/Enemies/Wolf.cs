@@ -6,14 +6,21 @@ namespace _1_Game.Enemies
 {
     public class Wolf : Enemy
     {
+        public override int DamageValue { get => 15; protected set => throw new NotImplementedException(); }
+
+        public Wolf()
+        {
+
+        }
+
         public Wolf(Point p) : base(p)
         {
-            DamageValue = 15;
+           
         }
 
         public override void Move()
         {
-            BaseClassEvent(new MoveEventArgs("Волчок пробежал", new Point(10, 10)));
+            BaseClassEvent(new MoveEventArgs("Волчок перемещается", new Point(10, 10)));
         }
     }
 }
