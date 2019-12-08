@@ -1,0 +1,11 @@
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.csprojAssemblyReference.cache
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.AssemblyInfoInputs.cache
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.AssemblyInfo.cs
+C:\Users\Администратор\source\repos\1_Game\1_Game\bin\Debug\netcoreapp2.2\1_Game.deps.json
+C:\Users\Администратор\source\repos\1_Game\1_Game\bin\Debug\netcoreapp2.2\1_Game.runtimeconfig.json
+C:\Users\Администратор\source\repos\1_Game\1_Game\bin\Debug\netcoreapp2.2\1_Game.runtimeconfig.dev.json
+C:\Users\Администратор\source\repos\1_Game\1_Game\bin\Debug\netcoreapp2.2\1_Game.dll
+C:\Users\Администратор\source\repos\1_Game\1_Game\bin\Debug\netcoreapp2.2\1_Game.pdb
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.dll
+C:\Users\Администратор\source\repos\1_Game\1_Game\obj\Debug\netcoreapp2.2\1_Game.pdb
