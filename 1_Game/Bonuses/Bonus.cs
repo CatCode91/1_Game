@@ -20,7 +20,7 @@ namespace _1_Game.Bonuses
 
         public Bonus()
         {
-            ChangeBonus();
+           
         }
 
         public Bonus(Point p)
