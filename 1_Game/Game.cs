@@ -81,7 +81,7 @@ namespace _1_Game
         }
 
         /// <summary>
-        /// Метод, если произошло "столкновение" с бонусом
+        /// Метод, если произошло "столкновение" игрока с бонусом
         /// </summary>
         /// <param name="s"></param>
         private void BonusCollision(Bonus s)
@@ -92,7 +92,7 @@ namespace _1_Game
         }
 
         /// <summary>
-        /// Метод,если произошло столкновение с противником
+        /// Метод,если произошло столкновение игрока с противником
         /// </summary>
         /// <param name="sender"></param>
         private void EnemyCollision(Enemy sender)
