@@ -16,7 +16,7 @@ namespace _1_Game
         Enemy[] enemiesType = new Enemy[] { new Dragon(), new Wolf() }; //создаем массив из возможных объектов противника для рандомной генерации по индексу
         Bonus[] bonusesType = new Bonus[] { new Apple(), new Cherry() }; //создаем массив из возможных объектов бонусов для рандомной генерации по индексу
 
-        GameField field; // переменная игрового поля
+        GameField field; // игровое поле
 
         public Game()
         {
