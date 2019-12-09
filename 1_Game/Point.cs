@@ -41,8 +41,8 @@ namespace _1_Game
 
         public Point(int x, int y)
         {
-            X = x;
-            Y = y;
+            this.x = x;
+            this.y = y;
         }
     }
 }
