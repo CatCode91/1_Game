@@ -20,18 +20,22 @@ namespace _1_Game
 
         public void Move()
         {
+            Point = new Point(1,1);
 
-            if (GameField.CheckMaterial(Point) is Water)
+            var material = GameField.CheckMaterial(Point);
+
+            if (material is Water)
             {
-                Moving?.Invoke(this, new MoveEventArgs("Не могу плавать!", Point));
+                this.Health += material.Value;
+                Moving?.Invoke(this, new MoveEventArgs("Не могу плавать, но вода увеличила здоровье!", Point));
             }
 
-            if (GameField.CheckMaterial(Point) is Road)
+            if (material is Road)
             {
                 Moving?.Invoke(this, new MoveEventArgs("Нахожусь на дороге", Point));
             }
 
-            if (GameField.CheckMaterial(Point) is Grass)
+            if (material is Grass)
             {
                 Moving?.Invoke(this, new MoveEventArgs("Нахожусь на траве", Point));
             }

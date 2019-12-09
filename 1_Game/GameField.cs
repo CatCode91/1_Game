@@ -10,17 +10,22 @@ namespace _1_Game
         private static Material[,] cells;
         private Material[] materials = new Material[] { new Water(), new Grass(), new Road() };
 
+        public static int FieldHeight { get; private set; } //поле, содержащее значение высоты окна
+        public static int FieldWidth { get; private set; } //поле, содержащее ширины окна
+
         /// <summary>
         /// Конструктор класса, принимающий высоту и ширину поля
         /// </summary>
         public GameField(int h, int w)
         {
             CreateGameField(h, w);
+            FieldHeight = h;
+            FieldWidth = w;
         }
 
 
         /// <summary>
-        /// Создает массив клеток игрового поля, и каждой клетке соответствует свой материал
+        /// Создает массив клеток игрового поля, из доступных материалов
         /// </summary>
         private static Material[,] CreateGameField(int h, int w)
         {
@@ -34,17 +39,7 @@ namespace _1_Game
         /// </summary>
         public static Material CheckMaterial (Point p)
         {
-            try
-            {
-                return cells[p.X, p.Y];
-            }
-
-            catch
-            {
-                return null;
-            }
-
-           
+          return cells?[p.X, p.Y];
         }
     }
 }

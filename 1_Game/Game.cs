@@ -8,22 +8,26 @@ namespace _1_Game
 {
     public class Game
     {
-        Player player = new Player();
-        Enemy[] enemies = new Enemy[5];
+        Player player = new Player(); //создаем объект игрока
+        Enemy[] enemies = new Enemy[5]; //создаем массив объектов противника
 
-        List<Bonus> bonuses = new List<Bonus>(5);
+        List<Bonus> bonuses = new List<Bonus>(5); //создаем список из объектов бонусов
 
-        Enemy[] enemiesType = new Enemy[] { new Dragon(), new Wolf() };
-        Bonus[] bonusesType = new Bonus[] { new Apple(), new Cherry() };
+        Enemy[] enemiesType = new Enemy[] { new Dragon(), new Wolf() }; //создаем массив из возможных объектов противника для рандомной генерации по индексу
+        Bonus[] bonusesType = new Bonus[] { new Apple(), new Cherry() }; //создаем массив из возможных объектов бонусов для рандомной генерации по индексу
 
-        GameField field;
+        GameField field; // переменная игрового поля
 
         public Game()
         {
-            field = new GameField(1000,600);
-            player.Moving += Player_Moving;
+            field = new GameField(1000, 600); //создаем объект игрового поля
+            player.Moving += Player_Moving; //подписываем метод на событие движения игрока
+            //при генерации массива врагов, подпишем каждого врага на метов Enemy_Moving
         }
 
+        /// <summary>
+        /// Метод, проверяющий завершение игры;
+        /// </summary>
         public void CheckGameStatus()
         {
             if (player.Health <= 0)
@@ -37,17 +41,11 @@ namespace _1_Game
             }       
         }
 
-        public void CheckEnemyCollision(Enemy sender, Point p)
-        {
-            if (sender.Point == player.Point)
-            {
-                sender.SetDamage(player);
-                Console.WriteLine($"Нанесен урон {sender.DamageValue}");
-
-                CheckGameStatus();
-            }
-        }
-
+        /// <summary>
+        /// Метод выполняющийся при движении игрока
+        /// </summary>
+        /// <param name="sender">Объект, вызвавший метод</param>
+        /// <param name="e">Параметры события</param>
         private void Player_Moving(object sender, MoveEventArgs e)
         {
             foreach (Enemy s in enemies)
@@ -67,7 +65,25 @@ namespace _1_Game
             }
 
         }
+        /// <summary>
+        /// Метод выполняющийся при движении врага
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Enemy_Moving(object sender, MoveEventArgs e)
+        {
+            if (e.Point == player.Point)
+            {
+                EnemyCollision((Enemy)sender);
+            }
 
+            CheckGameStatus();
+        }
+
+        /// <summary>
+        /// Метод, если произошло "столкновение" с бонусом
+        /// </summary>
+        /// <param name="s"></param>
         private void BonusCollision(Bonus s)
         {
             s.ApplyBonus(player);
@@ -75,20 +91,34 @@ namespace _1_Game
             bonuses.Remove(s);
         }
 
-        private void Enemy_Moving(object sender, MoveEventArgs e)
-        {
-            if (e.Point == player.Point)
-            { 
-                EnemyCollision((Enemy)sender);
-            }
-
-            CheckGameStatus();
-        }
-
+        /// <summary>
+        /// Метод,если произошло столкновение с противником
+        /// </summary>
+        /// <param name="sender"></param>
         private void EnemyCollision(Enemy sender)
         {
             sender.SetDamage(player);
             Console.WriteLine($"Нанесен урон {sender.DamageValue}");
         }
+        /// <summary>
+        /// Метод,если произошло столкновение с противника с игроком
+        /// </summary>
+        /// <param name="sender"></param>
+        public void EnemyCollision(Enemy sender, Point p)
+        {
+            if (sender.Point == player.Point)
+            {
+                sender.SetDamage(player);
+                Console.WriteLine($"Нанесен урон {sender.DamageValue}");
+
+                CheckGameStatus();
+            }
+        }
+
+      
+
+    
+
+
     }
 }

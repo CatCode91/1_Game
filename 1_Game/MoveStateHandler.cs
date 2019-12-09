@@ -11,7 +11,7 @@ namespace _1_Game
 
         public string Message { get; private set; }
         /// <summary>
-        /// Содержит координаты
+        /// Координаты
         /// </summary>
         public Point Point { get; private set; }
 
@@ -19,9 +19,9 @@ namespace _1_Game
         /// Используйте для прикрепления текстового сообщения
         /// </summary>
         /// <param name="_mes">Сообщение</param>
-        public MoveEventArgs(string _mes)
+        public MoveEventArgs(Point _p)
         {
-            Message = _mes;
+            Point = _p;
         }
 
         /// <summary>

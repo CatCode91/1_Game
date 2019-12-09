@@ -7,9 +7,37 @@ namespace _1_Game
     //класс описывающий координаты
     public class Point
     {
-        public int X { get; set; }
+        private int x;
+        public int X {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                if (x < 0)
+                    x = 0;
 
-        public int Y { get; set; }
+                if (x > GameField.FieldHeight)
+                    x = GameField.FieldHeight;
+            }
+        }
+
+        private int y;
+        public int Y
+        {
+            get
+            {
+                return y;
+            }
+            set
+            {
+                if (y < 0)
+                    y = 0;
+                if (y > GameField.FieldWidth)
+                    y = GameField.FieldWidth;
+            }
+        }
 
         public Point(int x, int y)
         {

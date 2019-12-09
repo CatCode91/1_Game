@@ -9,36 +9,40 @@ namespace _1_Game.Enemies
     {
         public override int DamageValue { get =>  10; protected set => throw new NotImplementedException(); }
 
-        public Dragon(Point p) : base(p)
-        {
-           
-        }
-
         public Dragon()
         {
 
         }
 
+        public Dragon(Point p) : base(p)
+        {
+            Point = new Point(1, 4);
+        }
+
         public override void Move()
         {
-            if (GameField.CheckMaterial(Point) is Water)
+            Point.X += 1;
+
+            var material = GameField.CheckMaterial(Point);
+
+            if (material is Water)
             {
-                BaseClassEvent(new MoveEventArgs("Дракончик плывет", new Point(10, 10)));
+                BaseClassEvent(new MoveEventArgs("Дракончик плывет", Point));
             }
 
-            if (GameField.CheckMaterial(Point) is Road)
+            if (material is Road)
             {
-                BaseClassEvent(new MoveEventArgs("Дракончик идет по дороге", new Point(10, 10)));
+                BaseClassEvent(new MoveEventArgs("Дракончик идет по дороге", Point));
             }
 
-            if (GameField.CheckMaterial(Point) is Grass)
+            if (material is Grass)
             {
-                BaseClassEvent(new MoveEventArgs("Дракончик идет по траве", new Point(10, 10)));
+                BaseClassEvent(new MoveEventArgs("Дракончик идет по траве", Point));
             }
 
             else
              {
-                BaseClassEvent(new MoveEventArgs("Дракончик идет", new Point(10, 10)));
+                BaseClassEvent(new MoveEventArgs("Дракончик идет", Point));
              }
 
         }
