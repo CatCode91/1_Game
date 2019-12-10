@@ -11,7 +11,7 @@ namespace _1_Game
         Player player = new Player(); //создаем объект игрока
         Enemy[] enemies = new Enemy[5]; //создаем массив объектов противника
 
-        List<Bonus> bonuses = new List<Bonus>(5); //создаем список из объектов бонусов
+        List<Bonus> bonuses = new List<Bonus>(5); //список бонусов
 
         Enemy[] enemiesType = new Enemy[] { new Dragon(), new Wolf() }; //создаем массив из возможных объектов противника для рандомной генерации по индексу
         Bonus[] bonusesType = new Bonus[] { new Apple(), new Cherry() }; //создаем массив из возможных объектов бонусов для рандомной генерации по индексу
