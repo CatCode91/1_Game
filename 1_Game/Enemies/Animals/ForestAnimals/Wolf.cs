@@ -4,19 +4,10 @@ using System.Text;
 
 namespace _1_Game.Enemies
 {
-    public class Wolf : Enemy
+    public class Wolf : Animal
     {
-        public override int DamageValue { get => 15; protected set => throw new NotImplementedException(); }
-
-        public Wolf()
-        {
-
-        }
-
-        public Wolf(Point p) : base(p)
-        {
-           
-        }
+        private int _damageValue = 10;
+        public override int DamageValue => _damageValue;
 
         public override void Move()
         {

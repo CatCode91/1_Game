@@ -8,7 +8,9 @@ namespace _1_Game
     {
         static void Main(string[] args)
         {
- 
+           
         }
+
+
     }
 }

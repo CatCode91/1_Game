@@ -7,42 +7,51 @@ namespace _1_Game
 {
     public class Player : IMovable
     {
-        public Point Point { get; set; }
-        public int Health { get; set; } 
-        public int Strench { get; set; } 
+        public Point Point { get; private set; }
+
+        private int health = 100;
+        public int Health {get;}
+
+        private int strench = 100;
+        public int Strench { get; }
 
         public event MoveStateHandler Moving;
 
         public Player()
         {
+
         }
 
+        public void SetDamage(int i)
+        {
+            health -= i;
+            if (health <= 0)
+            {
+                health = 0;
+            }
+        }
+
+        public void SetHealth(int i)
+        {
+            health += i;
+            if (health > 100)
+            {
+                health = 100;
+            }
+        }
+
+        public void SetStrench(int i)
+        {
+            strench += i;
+            if (strench > 100)
+            {
+                strench = 100;
+            }
+        }
 
         public void Move()
         {
             Point = new Point(1,1);
-
-            var material = GameField.CheckMaterial(Point);
-
-            if (material is Water)
-            {
-                this.Health += material.Value;
-                Moving?.Invoke(this, new MoveEventArgs("Не могу плавать, но вода увеличила здоровье!", Point));
-            }
-
-            if (material is Road)
-            {
-                Moving?.Invoke(this, new MoveEventArgs("Нахожусь на дороге", Point));
-            }
-
-            if (material is Grass)
-            {
-                Moving?.Invoke(this, new MoveEventArgs("Нахожусь на траве", Point));
-            }
-
-            else
-            {
-            }
         }
     }
 }

@@ -6,11 +6,9 @@ namespace _1_Game.Materials
 {
     public class Water : Material
     {
-        public Water()
-        {
-            Value = 10;
-            IsMoveble = false;
-        }
+        public override int Value => 0;
+
+        public override bool IsMoveble => false;
     }
 
 }

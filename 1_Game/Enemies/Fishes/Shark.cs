@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _1_Game
+namespace _1_Game.Enemies
 {
-    interface IMovable
+    public class Shark : Fish
     {
-        void Move();
+
     }
 }

@@ -7,7 +7,7 @@ namespace _1_Game.Enemies
     public abstract class Enemy : IMovable
     {
         public Point Point {get; set; }
-        public abstract int DamageValue { get; protected set; }
+        public abstract int DamageValue { get; }
    
         public event MoveStateHandler Moving;
 
@@ -30,7 +30,7 @@ namespace _1_Game.Enemies
         /// <summary> Метод, изменяющий значение свойства у объекта Игрок (наносящий урон) </summary>
         public void SetDamage(Player p)
         {
-            p.Health -= DamageValue;
+            p.SetDamage(DamageValue);
         }
 
         public virtual void Move()

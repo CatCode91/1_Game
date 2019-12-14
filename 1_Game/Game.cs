@@ -13,9 +13,6 @@ namespace _1_Game
 
         List<Bonus> bonuses = new List<Bonus>(5); //список бонусов
 
-        Enemy[] enemiesType = new Enemy[] { new Dragon(), new Wolf() }; //создаем массив из возможных объектов противника для рандомной генерации по индексу
-        Bonus[] bonusesType = new Bonus[] { new Apple(), new Cherry() }; //создаем массив из возможных объектов бонусов для рандомной генерации по индексу
-
         GameField field; // игровое поле
 
         public Game()
@@ -114,11 +111,5 @@ namespace _1_Game
                 CheckGameStatus();
             }
         }
-
-      
-
-    
-
-
     }
 }

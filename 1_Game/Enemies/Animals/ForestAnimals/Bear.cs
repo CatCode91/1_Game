@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _1_Game
+namespace _1_Game.Enemies.Animals.ForestAnimals
 {
-    interface IMovable
+    class Bear : Animal
     {
-        void Move();
     }
 }

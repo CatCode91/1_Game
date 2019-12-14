@@ -7,19 +7,8 @@ namespace _1_Game.Bonuses
 {
     public class Apple : Bonus
     {
-        private int helpValue = 10;
-        public override int HelpValue
-        {
-            get
-            {
-                return helpValue;
-            }
-
-            protected set
-            {
-                helpValue = value;
-            }
-        }
+        private int _helpValue = 7;
+        public override int HelpValue => _helpValue;
 
         public Apple()
         {
@@ -33,7 +22,7 @@ namespace _1_Game.Bonuses
 
         public override void ApplyBonus(Player p)
         {
-            p.Health += HelpValue;
+            p.SetHealth(HelpValue);
         }
 
         protected override void ChangeBonus()
@@ -46,12 +35,11 @@ namespace _1_Game.Bonuses
         /// </summary>
         private async void GrowApple()
         {
-            while (helpValue <= 50)
+            while (_helpValue <= 50)
             {
-                helpValue += 4;
+                _helpValue += 4;
                 await Task.Delay(5000);
             }
         }
-
     }
 }

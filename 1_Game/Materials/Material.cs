@@ -4,10 +4,10 @@ using System.Text;
 
 namespace _1_Game.Materials
 {
-    public class Material
+    public abstract class Material
     {
-        public int Value { get; set; } = 1;
+        public abstract int Value { get; }
 
-        public bool IsMoveble { get; set; } = true;
+        public abstract bool IsMoveble { get; } 
     }
 }

@@ -7,19 +7,8 @@ namespace _1_Game.Bonuses
 {
     public class Cherry : Bonus
     {
-        private int helpValue = 10;
-        public override int HelpValue
-        {
-            get
-            {
-                return helpValue;
-            }
-
-            protected set
-            {
-                helpValue = value;
-            }
-        }
+        private int _helpValue = 8;
+        public override int HelpValue => _helpValue;
 
         public Cherry()
         {
@@ -33,14 +22,12 @@ namespace _1_Game.Bonuses
 
         public override void ApplyBonus(Player p)
         {
-            p.Health += HelpValue;
+            p.SetStrench(HelpValue);
         }
 
         protected override void ChangeBonus()
         {
             
         }
-
-      
     }
 }
