@@ -8,7 +8,7 @@ namespace _1_Game
 {
     public class Game
     {
-        Player player = new Player(); //создаем объект игрока
+        Player player = new Player(new Point(1,1)); //создаем объект игрока с заданными координатами
         Enemy[] enemies = new Enemy[5]; //создаем массив объектов противника
 
         List<Bonus> bonuses = new List<Bonus>(5); //список бонусов
@@ -17,7 +17,7 @@ namespace _1_Game
 
         public Game()
         {
-            field = new GameField(1000, 600); //создаем объект игрового поля
+            field = new GameField(1000, 600); //создаем игровое поле
             player.Moving += Player_Moving; //подписываем метод на событие движения игрока
             //при генерации массива врагов, подпишем каждого врага на метов Enemy_Moving
         }
@@ -60,7 +60,7 @@ namespace _1_Game
                     BonusCollision(s);
                 }
             }
-
+            CheckGameStatus();
         }
         /// <summary>
         /// Метод выполняющийся при движении врага
@@ -107,8 +107,6 @@ namespace _1_Game
             {
                 sender.SetDamage(player);
                 Console.WriteLine($"Нанесен урон {sender.DamageValue}");
-
-                CheckGameStatus();
             }
         }
     }

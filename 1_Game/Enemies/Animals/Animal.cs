@@ -4,10 +4,21 @@ using System.Text;
 
 namespace _1_Game.Enemies
 {
-    public class Animal : Enemy
+    public abstract class Animal : Enemy
     {
-        private int _damageValue = 10;
-        public override int DamageValue => _damageValue;
+        public virtual int Strength { get; }
 
+        public virtual int Speed { get; }
+
+        public override int DamageValue => 5 * Strength;
+
+        public override Point Point => throw new NotImplementedException();
+
+        public abstract void Roar();
+
+        public override void Move()
+        {
+            Console.WriteLine($"Бежит со скоростью: {Speed}");
+        }
     }
 }

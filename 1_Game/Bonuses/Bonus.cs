@@ -7,7 +7,7 @@ namespace _1_Game.Bonuses
     public abstract class Bonus
     {
         /// <summary>Координаты расположения бонуса</summary>
-        public Point Point { get; set; }
+        public abstract Point Point { get; }
 
         /// <summary>Величина бонуса</summary>
         public abstract int HelpValue { get; } 

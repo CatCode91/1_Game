@@ -7,25 +7,28 @@ namespace _1_Game
 {
     public class Player : IMovable
     {
-        public Point Point { get; private set; }
+        private Point _point;
+        public Point Point { get => _point; }
 
+        //здоровье игрока
         private int health = 100;
         public int Health {get;}
 
+        //сила игрока
         private int strench = 100;
         public int Strench { get; }
 
         public event MoveStateHandler Moving;
 
-        public Player()
+        public Player(Point point)
         {
-
+            _point = point;
         }
 
         public void SetDamage(int i)
         {
             health -= i;
-            if (health <= 0)
+            if (health < 0)
             {
                 health = 0;
             }
@@ -51,7 +54,7 @@ namespace _1_Game
 
         public void Move()
         {
-            Point = new Point(1,1);
+            Moving?.Invoke(this, new MoveEventArgs(_point));
         }
     }
 }

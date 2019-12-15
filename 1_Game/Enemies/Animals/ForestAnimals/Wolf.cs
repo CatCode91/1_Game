@@ -13,5 +13,10 @@ namespace _1_Game.Enemies
         {
             BaseClassEvent(new MoveEventArgs("Волчок перемещается", new Point(10, 10)));
         }
+
+        public override void Roar()
+        {
+            Console.WriteLine("Уууууууууу!");
+        }
     }
 }

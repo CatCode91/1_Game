@@ -10,14 +10,12 @@ namespace _1_Game.Bonuses
         private int _helpValue = 7;
         public override int HelpValue => _helpValue;
 
-        public Apple()
-        {
-        
-        }
+        private Point _point;
+        public override Point Point => _point;
 
-        public Apple(Point p) : base(p)
+        public Apple(Point point)
         {
-           
+            _point = point;
         }
 
         public override void ApplyBonus(Player p)

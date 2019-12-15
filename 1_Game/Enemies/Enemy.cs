@@ -6,29 +6,23 @@ namespace _1_Game.Enemies
 {
     public abstract class Enemy : IMovable
     {
-        public Point Point {get; set; }
+        #region Свойства
         public abstract int DamageValue { get; }
-   
+        #endregion
+
+        #region Cвойства и события движения
+        public virtual Point Point { get; }
+
         public event MoveStateHandler Moving;
 
         protected void BaseClassEvent(MoveEventArgs e)
         {
             Moving?.Invoke(this, e);
-        }
-
-        public Enemy()
-        {
 
         }
+        #endregion
 
-        /// <summary>Конструктор класса с координатами</summary>
-        public Enemy(Point p)
-        {
-
-        }
-
-        /// <summary> Метод, изменяющий значение свойства у объекта Игрок (наносящий урон) </summary>
-        public void SetDamage(Player p)
+        public virtual void SetDamage(Player p)
         {
             p.SetDamage(DamageValue);
         }
