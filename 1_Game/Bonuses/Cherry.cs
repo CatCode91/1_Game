@@ -5,18 +5,14 @@ using System.Threading.Tasks;
 
 namespace _1_Game.Bonuses
 {
+   /// <summary>
+   /// Бонус вишня, увеличивает силу игрока
+   /// </summary>
+
     public class Cherry : Bonus
     {
         private int _helpValue = 8;
         public override int HelpValue => _helpValue;
-
-        private Point _point;
-        public override Point Point => _point;
-
-        public Cherry(Point point)
-        {
-            _point = point;
-        }
 
         public override void ApplyBonus(Player p)
         {
@@ -25,7 +21,7 @@ namespace _1_Game.Bonuses
 
         protected override void ChangeBonus()
         {
-            
+         
         }
     }
 }

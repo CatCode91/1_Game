@@ -10,9 +10,7 @@ namespace _1_Game
     {
         static void Main(string[] args)
         {
-            Enemy bw = new BlueWhale();
-            Console.WriteLine(bw.DamageValue);
-            Console.ReadKey();
+          
         }
     }
 }

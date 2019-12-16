@@ -5,18 +5,13 @@ using System.Threading.Tasks;
 
 namespace _1_Game.Bonuses
 {
+    /// <summary>
+    /// Бонус яблоко, увеличивает здоровье игрока
+    /// </summary>
     public class Apple : Bonus
     {
         private int _helpValue = 7;
         public override int HelpValue => _helpValue;
-
-        private Point _point;
-        public override Point Point => _point;
-
-        public Apple(Point point)
-        {
-            _point = point;
-        }
 
         public override void ApplyBonus(Player p)
         {
@@ -33,7 +28,7 @@ namespace _1_Game.Bonuses
         /// </summary>
         private async void GrowApple()
         {
-            while (_helpValue <= 50)
+            while (HelpValue <= 50)
             {
                 _helpValue += 4;
                 await Task.Delay(5000);

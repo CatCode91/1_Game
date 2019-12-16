@@ -8,7 +8,7 @@ namespace _1_Game
 {
     public class Game
     {
-        Player player = new Player(new Point(1,1)); //создаем объект игрока с заданными координатами
+        Player player = new Player(); //создаем объект игрока с заданными координатами
         Enemy[] enemies = new Enemy[5]; //создаем массив объектов противника
 
         List<Bonus> bonuses = new List<Bonus>(5); //список бонусов

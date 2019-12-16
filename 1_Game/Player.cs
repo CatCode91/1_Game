@@ -11,44 +11,39 @@ namespace _1_Game
         public Point Point { get => _point; }
 
         //здоровье игрока
-        private int health = 100;
-        public int Health {get;}
+        private int _health = 70;
+        public int Health => _health;
 
         //сила игрока
-        private int strench = 100;
-        public int Strench { get; }
+        private int _strench = 100;
+        public int Strench => _strench;
 
         public event MoveStateHandler Moving;
 
-        public Player(Point point)
-        {
-            _point = point;
-        }
-
         public void SetDamage(int i)
         {
-            health -= i;
-            if (health < 0)
+            _health -= i;
+            if (_health < 0)
             {
-                health = 0;
+                _health = 0;
             }
         }
 
         public void SetHealth(int i)
         {
-            health += i;
-            if (health > 100)
+            _health += i;
+            if (_health > 100)
             {
-                health = 100;
+                _health = 100;
             }
         }
 
         public void SetStrench(int i)
         {
-            strench += i;
-            if (strench > 100)
+            _strench += i;
+            if (_strench > 100)
             {
-                strench = 100;
+                _strench = 100;
             }
         }
 

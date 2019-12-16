@@ -7,27 +7,24 @@ namespace _1_Game.Enemies
     public abstract class Enemy : IMovable
     {
         public abstract int DamageValue { get; }
+        public abstract void SetDamage(Player p);
 
-        private Point _point;
-        public virtual Point Point => _point;
-
+        private Point point;
+        public virtual Point Point { get; }
         public event MoveStateHandler Moving;
-
         protected void BaseClassEvent(MoveEventArgs e)
         {
             Moving?.Invoke(this, e);
 
         }
 
-        public virtual void SetDamage(Player p)
-        {
-            p.SetDamage(DamageValue);
-        }
-
         public virtual void Move()
         {
             throw new NotImplementedException();
         }
+
+   
+
 
     }
 }

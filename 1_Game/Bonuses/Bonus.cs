@@ -6,11 +6,8 @@ namespace _1_Game.Bonuses
 {
     public abstract class Bonus
     {
-        /// <summary>Координаты расположения бонуса</summary>
-        public abstract Point Point { get; }
-
-        /// <summary>Величина бонуса</summary>
-        public abstract int HelpValue { get; } 
+        public Point Point { get; }
+        public abstract int HelpValue { get; }
 
         /// <summary>Используйте для изменения свойства у бонуса</summary>
         protected abstract void ChangeBonus();
