@@ -8,7 +8,7 @@ namespace _1_Game.Materials
     {
         public override int Value => 0;
 
-        public override bool IsMoveble => false;
+       
     }
 
 }

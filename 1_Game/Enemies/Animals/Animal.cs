@@ -6,13 +6,11 @@ namespace _1_Game.Enemies
 {
     public abstract class Animal : Enemy
     {
-        public virtual int Strength { get; }
+        public abstract int Strength { get; }
 
-        public virtual int Speed { get; }
+        public abstract int Speed { get; }
 
         public override int DamageValue => 5 * Strength;
-
-        public override Point Point => throw new NotImplementedException();
 
         public abstract void Roar();
 

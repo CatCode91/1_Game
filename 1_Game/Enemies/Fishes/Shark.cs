@@ -6,12 +6,8 @@ namespace _1_Game.Enemies
 {
     public class Shark : Fish
     {
-        public Shark(Point point) : base(point)
-        {
-
-        }
-
         public override int DamageValue => 25;
+        public override int SwimSpeed => 25;
 
         public override void SetDamage(Player p)
         {

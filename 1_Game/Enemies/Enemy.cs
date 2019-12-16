@@ -6,12 +6,10 @@ namespace _1_Game.Enemies
 {
     public abstract class Enemy : IMovable
     {
-        #region Свойства
         public abstract int DamageValue { get; }
-        #endregion
 
-        #region Cвойства и события движения
-        public virtual Point Point { get; }
+        private Point _point;
+        public virtual Point Point => _point;
 
         public event MoveStateHandler Moving;
 
@@ -20,7 +18,6 @@ namespace _1_Game.Enemies
             Moving?.Invoke(this, e);
 
         }
-        #endregion
 
         public virtual void SetDamage(Player p)
         {
@@ -31,5 +28,6 @@ namespace _1_Game.Enemies
         {
             throw new NotImplementedException();
         }
+
     }
 }
