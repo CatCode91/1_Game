@@ -9,8 +9,7 @@ namespace _1_Game.Enemies
         public abstract int DamageValue { get; }
         public abstract void SetDamage(Player p);
 
-        private Point point;
-        public virtual Point Point { get; }
+        public Point Point { get; private set; }
         public event MoveStateHandler Moving;
         protected void BaseClassEvent(MoveEventArgs e)
         {
@@ -18,13 +17,14 @@ namespace _1_Game.Enemies
 
         }
 
-        public virtual void Move()
+        public void Move()
         {
-            throw new NotImplementedException();
+            Moving?.Invoke(this, new MoveEventArgs(Point));
         }
 
-   
-
-
+        public void SetPosition(Point point)
+        {
+            Point  = point;
+        }
     }
 }

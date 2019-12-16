@@ -1,9 +1,8 @@
-﻿using _1_Game.Materials;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace _1_Game
+namespace _1_Game.Field
 {
     public class GameField
     {

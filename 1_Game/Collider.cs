@@ -4,9 +4,9 @@ using System.Text;
 
 namespace _1_Game
 {
-    interface IMovable
+    public class Collider
     {
-        Point Point { get; }
-        void Move();
+        public 
+
     }
 }

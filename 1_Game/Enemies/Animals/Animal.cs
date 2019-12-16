@@ -17,14 +17,10 @@ namespace _1_Game.Enemies
             Console.WriteLine("Рррр");
         }
 
-        public override void Move()
-        {
-            Console.WriteLine($"Бежит со скоростью: {Speed}");
-        }
-
         public override void SetDamage(Player p)
         {
             p.SetDamage(DamageValue);
+            p.SetStrench(-3);
         }
     }
 }

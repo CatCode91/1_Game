@@ -8,18 +8,11 @@ namespace _1_Game
 {
     public class Game
     {
-        Player player = new Player(); //создаем объект игрока с заданными координатами
-        Enemy[] enemies = new Enemy[5]; //создаем массив объектов противника
-
-        List<Bonus> bonuses = new List<Bonus>(5); //список бонусов
-
-        GameField field; // игровое поле
-
+        Player player;
+   
         public Game()
         {
-            field = new GameField(1000, 600); //создаем игровое поле
-            player.Moving += Player_Moving; //подписываем метод на событие движения игрока
-            //при генерации массива врагов, подпишем каждого врага на метов Enemy_Moving
+            player = new Player();
         }
 
         /// <summary>
