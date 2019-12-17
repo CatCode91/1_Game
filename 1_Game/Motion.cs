@@ -4,9 +4,11 @@ using System.Text;
 
 namespace _1_Game
 {
-    public class Collider
+    enum Motion
     {
-        public 
-
+        Up,
+        Down,
+        Left,
+        Right
     }
 }

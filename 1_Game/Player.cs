@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using _1_Game.Materials;
 
 namespace _1_Game
 {
     public class Player : IMovable
     {
-        public Point Point { get; }
+        public Point Point { get; private set; }
 
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
+        public int Speed { get; private set; } = 50;
 
         public event MoveStateHandler Moving;
 
@@ -45,10 +47,21 @@ namespace _1_Game
             }
         }
 
-        public void Move()
+        public void Move(Point point, Material material)
         {
-            Moving?.Invoke(this, new MoveEventArgs(Point));
-        }
+            if (material is Grass)
+            {
+                //идет, но изменяется какое-то свойство (особой логики в изменение процесса движения пока не вкладывал)
+                Speed -= material.Value;
+                this.Point = point;
+                Moving?.Invoke(this, new MoveEventArgs(Point));
+            }
 
+            if (material is Sand)
+            {
+                this.Point = point;
+                Moving?.Invoke(this, new MoveEventArgs(Point));
+            }
+        }
     }
 }

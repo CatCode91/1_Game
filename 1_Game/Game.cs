@@ -1,5 +1,6 @@
 ﻿using _1_Game.Bonuses;
 using _1_Game.Enemies;
+using _1_Game.Field;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,15 +10,16 @@ namespace _1_Game
     public class Game
     {
         Player player;
+        Enemy[] enemies;
+        List<Bonus> bonuses;
+        GameField gamefield;
    
         public Game()
         {
+            gamefield = new GameField(1000, 600);
             player = new Player();
         }
 
-        /// <summary>
-        /// Метод, проверяющий завершение игры;
-        /// </summary>
         public void CheckGameStatus()
         {
             if (player.Health <= 0)
@@ -31,12 +33,38 @@ namespace _1_Game
             }       
         }
 
-        /// <summary>
-        /// Метод выполняющийся при движении игрока
-        /// </summary>
-        /// <param name="sender">Объект, вызвавший метод</param>
-        /// <param name="e">Параметры события</param>
         private void Player_Moving(object sender, MoveEventArgs e)
+        {
+            Console.WriteLine(e.Point.ToString());
+        }
+
+        public void Controller()
+        {
+            Point p = player.Point;
+
+            Motion m = new Motion();
+            switch (m)
+            {
+                case (Motion.Up):
+                    p.X++;
+                    break;
+                case (Motion.Down):
+                    p.Y--;
+                    break;
+                case (Motion.Left):
+                    p.X--;
+                    break;
+                case (Motion.Right):
+                    p.X++;
+                    break;
+                default:
+                    break;
+            }
+
+            player.Move(p, gamefield.Field[p.X, p.Y]);
+        }
+
+        private void PlayerCollisions(MoveEventArgs e)
         {
             foreach (Enemy s in enemies)
             {
@@ -50,11 +78,13 @@ namespace _1_Game
             {
                 if (e.Point == s.Point)
                 {
-                    BonusCollision(s);
+                    s.ApplyBonus(player);
+                    Console.WriteLine($"Здоровье увеличилось {s.HelpValue}");
+                    bonuses.Remove(s);
                 }
             }
-            CheckGameStatus();
         }
+
         /// <summary>
         /// Метод выполняющийся при движении врага
         /// </summary>
@@ -62,23 +92,14 @@ namespace _1_Game
         /// <param name="e"></param>
         private void Enemy_Moving(object sender, MoveEventArgs e)
         {
-            if (e.Point == player.Point)
+            var enemy = (Enemy)sender;
+
+            if (enemy.Point == player.Point)
             {
-                EnemyCollision((Enemy)sender);
+                enemy.SetDamage(player);
             }
 
             CheckGameStatus();
-        }
-
-        /// <summary>
-        /// Метод, если произошло "столкновение" игрока с бонусом
-        /// </summary>
-        /// <param name="s"></param>
-        private void BonusCollision(Bonus s)
-        {
-            s.ApplyBonus(player);
-            Console.WriteLine($"Здоровье увеличилось {s.HelpValue}");
-            bonuses.Remove(s);
         }
 
         /// <summary>
@@ -89,18 +110,6 @@ namespace _1_Game
         {
             sender.SetDamage(player);
             Console.WriteLine($"Нанесен урон {sender.DamageValue}");
-        }
-        /// <summary>
-        /// Метод,если произошло столкновение с противника с игроком
-        /// </summary>
-        /// <param name="sender"></param>
-        public void EnemyCollision(Enemy sender, Point p)
-        {
-            if (sender.Point == player.Point)
-            {
-                sender.SetDamage(player);
-                Console.WriteLine($"Нанесен урон {sender.DamageValue}");
-            }
         }
     }
 }

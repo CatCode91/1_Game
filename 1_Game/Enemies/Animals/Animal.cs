@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1_Game.Materials;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,6 +22,21 @@ namespace _1_Game.Enemies
         {
             p.SetDamage(DamageValue);
             p.SetStrench(-3);
+        }
+
+        public override void Move(Point point, Material material)
+        {
+            if (material is Grass)
+            {
+                this.Point = point;
+                BaseClassEvent(new MoveEventArgs(Point));
+            }
+
+            if (material is Sand)
+            {
+                this.Point = point;
+                BaseClassEvent(new MoveEventArgs(Point));
+            }
         }
     }
 }
