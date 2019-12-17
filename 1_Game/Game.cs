@@ -7,61 +7,50 @@ using System.Text;
 
 namespace _1_Game
 {
+    enum Motion
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public class Game
     {
-        Player player;
-        Enemy[] enemies;
-        List<Bonus> bonuses;
+        Player player = new Player();
+        Enemy[] enemies = new Enemy[10];
+        List<Bonus> bonuses = new List<Bonus>(10);
         GameField gamefield;
+
+        private int height;
+        private int width;
    
-        public Game()
+        public Game(int h,int w)
         {
-            gamefield = new GameField(1000, 600);
-            player = new Player();
-        }
+            height = h;
+            width = w;
 
-        public void CheckGameStatus()
-        {
-            if (player.Health <= 0)
-            {
-                Console.WriteLine("Вы проиграли!");
-            }
-
-            if (bonuses.Count == 0)
-            {
-                Console.WriteLine("Вы собрали все бонусы!");
-            }       
+            gamefield = new GameField(height, width);
+            player.Moving += Player_Moving;
+            MoveController m = new MoveController(player);
         }
 
         private void Player_Moving(object sender, MoveEventArgs e)
         {
-            Console.WriteLine(e.Point.ToString());
+            PlayerCollisions(e);
+            CheckGameStatus();
         }
 
-        public void Controller()
+        private void Enemy_Moving(object sender, MoveEventArgs e)
         {
-            Point p = player.Point;
+            var enemy = (Enemy)sender;
 
-            Motion m = new Motion();
-            switch (m)
+            if (enemy.Point == player.Point)
             {
-                case (Motion.Up):
-                    p.X++;
-                    break;
-                case (Motion.Down):
-                    p.Y--;
-                    break;
-                case (Motion.Left):
-                    p.X--;
-                    break;
-                case (Motion.Right):
-                    p.X++;
-                    break;
-                default:
-                    break;
+                enemy.SetDamage(player);
             }
 
-            player.Move(p, gamefield.Field[p.X, p.Y]);
+            CheckGameStatus();
         }
 
         private void PlayerCollisions(MoveEventArgs e)
@@ -70,7 +59,8 @@ namespace _1_Game
             {
                 if (e.Point == s.Point)
                 {
-                    EnemyCollision(s);
+                    s.SetDamage(player);
+                    Console.WriteLine($"Нанесен урон {s.DamageValue}");
                 }
             }
 
@@ -85,31 +75,17 @@ namespace _1_Game
             }
         }
 
-        /// <summary>
-        /// Метод выполняющийся при движении врага
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Enemy_Moving(object sender, MoveEventArgs e)
+        public void CheckGameStatus()
         {
-            var enemy = (Enemy)sender;
-
-            if (enemy.Point == player.Point)
+            if (player.Health <= 0)
             {
-                enemy.SetDamage(player);
+                Console.WriteLine("Вы проиграли!");
             }
 
-            CheckGameStatus();
-        }
-
-        /// <summary>
-        /// Метод,если произошло столкновение игрока с противником
-        /// </summary>
-        /// <param name="sender"></param>
-        private void EnemyCollision(Enemy sender)
-        {
-            sender.SetDamage(player);
-            Console.WriteLine($"Нанесен урон {sender.DamageValue}");
+            if (bonuses.Count == 0)
+            {
+                Console.WriteLine("Вы собрали все бонусы!");
+            }
         }
     }
 }
