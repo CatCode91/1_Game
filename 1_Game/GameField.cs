@@ -5,6 +5,9 @@ using System.Text;
 
 namespace _1_Game.Field
 {
+    /// <summary>
+    /// Класс игрового поля
+    /// </summary>
     public class GameField
     {
         public Material[,] Field { get; private set; }
