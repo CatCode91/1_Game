@@ -11,6 +11,7 @@ namespace _1_Game.Enemies
         public abstract int DamageValue { get; }
         public abstract void SetDamage(Player p);
 
+        //Point set protected, чтоб можно было переопределять метод Move в наследниках
         public Point Point { get; protected set; }
         public event MoveStateHandler Moving;
         protected void BaseClassEvent(MoveEventArgs e)
@@ -21,16 +22,32 @@ namespace _1_Game.Enemies
 
         public virtual void Move(Point point, Material material)
         {
-            if (material is Sand)
+            if (material is Water)
             {
-                this.Point = point;
-                Moving?.Invoke(this, new MoveEventArgs(Point));
+                //не может плыть
+                return;
             }
+
+            if (material is Wall)
+            {
+                //не может проходить сквозь стены
+                return;
+            }
+
+            Point = point;
+            BaseClassEvent(new MoveEventArgs(Point));
         }
 
-        public void SetPosition(Point point)
+        //для установки первоначальных координат
+        public void SetStartPosition(Point point)
         {
-            Point  = point;
+            /*после установки первоначального значения, возможна установка значений Pointa только
+            из метода Move
+             */
+            if (Point == null)
+            {
+                Point = point;
+            }
         }
     }
 }

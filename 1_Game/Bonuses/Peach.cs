@@ -9,18 +9,17 @@ namespace _1_Game.Bonuses
     /// </summary>
     public class Peach : Bonus
     {
-        private int _helpValue;
+        private int _helpValue = 7;
         public override int HelpValue => _helpValue;
 
         public override void ApplyBonus(Player p)
         {
-            p.SetStrench(_helpValue);
-            p.SetHealth(_helpValue);
+            p.SetStrench(HelpValue);
+            p.SetHealth(HelpValue);
         }
 
         protected override void ChangeBonus()
         {
-            throw new NotImplementedException();
         }
     }
 }

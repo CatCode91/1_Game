@@ -9,16 +9,21 @@ namespace _1_Game
 {
     public class Game
     {
-        private int height, width; //размеры окна
+        //размеры окна статические, передаются в класс Point для валидации координат
+        public static int Height { get; private set; } 
+        public static int Width { get; private set; }
 
-        Player player;
-        Enemy[] enemies = new Enemy[10];
-        List<Bonus> bonuses = new List<Bonus>(10);
         GameField gamefield;
+        Player player;
+        List<Enemy> enemies = new List<Enemy>(10);
+        List<Bonus> bonuses = new List<Bonus>(7);
 
-        public Game(int height,int width)
+        public Game(int width,int height)
         {
-            gamefield = new GameField(height, width);
+            Width = width;
+            Height = height;
+
+            gamefield = new GameField(width, height);
             player = new Player();
             player.Moving += Player_Moving;
         }
@@ -34,29 +39,23 @@ namespace _1_Game
                     p.Y++;
                     break;
                 case (ConsoleKey.DownArrow):
-                    p.Y--;
+                   p.Y--;
                     break;
                 case (ConsoleKey.LeftArrow):
-                    p.X--;
+                   p.X--;
                     break;
                 case (ConsoleKey.RightArrow):
-                    p.X++;
+                   p.X++;
                     break;
                 default:
                     break;
             }
-
-            //проверяем, не выходят ли координаты за пределы окна
-            if ((p.X > width || p.X < 0) || (p.Y > height || p.Y < 0))
-            {
-                return;
-            }
-
             player.Move(p,gamefield.Field[p.X,p.Y]);
         }
 
         private void Player_Moving(object sender, MoveEventArgs e)
         {
+            Console.WriteLine($"Игрок находится: {player.Point}");
             //после передвижения игрока проверяем столкновения с другими объектами
             PlayerCollisions(e);
             //проверяем выполнение условий для завершения игры
@@ -103,7 +102,7 @@ namespace _1_Game
         /// <summary>
         /// Метод, определяющий условия для завершения игры
         /// </summary>
-        public void CheckGameStatus()
+        private void CheckGameStatus()
         {
             if (player.Health <= 0)
             {

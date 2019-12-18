@@ -7,7 +7,7 @@ namespace _1_Game
 {
     public class Player : IMovable
     {
-        public Point Point { get; private set; }
+        public Point Point { get; private set; } = new Point(0, 0);
 
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
@@ -49,19 +49,13 @@ namespace _1_Game
 
         public void Move(Point point, Material material)
         {
-            if (material is Grass)
+            if (material is Water || material is Wall)
             {
-                //идет, но изменяется какое-то свойство (особой логики в изменение процесса движения пока не вкладывал)
-                Speed -= material.Value;
-                this.Point = point;
-                Moving?.Invoke(this, new MoveEventArgs(Point));
+                //не может идти
+                return;
             }
-
-            if (material is Sand)
-            {
-                this.Point = point;
-                Moving?.Invoke(this, new MoveEventArgs(Point));
-            }
+            Point = point;
+            Moving?.Invoke(this, new MoveEventArgs(Point));
         }
     }
 }

@@ -18,24 +18,28 @@ namespace _1_Game.Enemies
 
         public override void Move(Point point, Material material)
         {
-            if (material is Sand)
-            {
-                Point = point;
-                BaseClassEvent(new MoveEventArgs(Point));
-            }
-
             if (material is Water)
             {
-                Point = point;
-                BaseClassEvent(new MoveEventArgs(Point));
+                //не может плыть
+                return;
             }
 
             if (material is Wall)
             {
-                if (material.Value > 10)
+                var m = (Wall)material;
+                if (m.Height > 10)
                 {
                     //может перелететь
+                    Point = point;
+                    BaseClassEvent(new MoveEventArgs(Point));
+                    return;
                 }
+            }
+
+            else 
+            {
+                Point = point;
+                BaseClassEvent(new MoveEventArgs(Point));
             }
         }
 

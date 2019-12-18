@@ -9,10 +9,5 @@ namespace _1_Game.Enemies
     {
         public override int DamageValue => 5;
         public override int SwimSpeed => 25;
-
-        public override void SetDamage(Player p)
-        {
-                p.SetDamage(DamageValue);
-        }
     }
 }

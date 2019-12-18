@@ -5,11 +5,10 @@ using System.Text;
 
 namespace _1_Game.Enemies
 {
-    public class Fish : Enemy
+    public abstract class Fish : Enemy
     {
-        public override int DamageValue => 15;
         public bool CanSwim { get; } = true;
-        public virtual int SwimSpeed => 10;
+        public abstract int SwimSpeed { get; }
 
         public override void SetDamage(Player p)
         {
@@ -18,6 +17,8 @@ namespace _1_Game.Enemies
 
         public override void Move(Point point, Material material)
         {
+            //может передвигаться только в воде
+
             if (material is Water)
             {
                 Point = point;

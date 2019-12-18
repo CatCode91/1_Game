@@ -10,11 +10,12 @@ namespace _1_Game.Field
     /// </summary>
     public class GameField
     {
+        //двумерный массив, представляющий собой координатную плоскость игрового поля
         public Material[,] Field { get; private set; }
 
-        public GameField(int height, int width)
+        public GameField(int width, int height)
         {
-            Field = new Material[height, width];
+            Field = new Material[width,height];
         }
     }
 }
