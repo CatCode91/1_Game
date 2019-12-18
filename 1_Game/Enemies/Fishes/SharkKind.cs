@@ -13,7 +13,7 @@ namespace _1_Game.Enemies.Fishes
         {
             if (p.Health <= 10)
             {
-                Console.WriteLine("Ладно, живи :)");
+                Console.WriteLine("Ладно, еще увидимся! :)");
             }
 
             else
