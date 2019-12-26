@@ -9,11 +9,10 @@ namespace _1_Game
         public int X { get; set; }
         public int Y { get; set; }
 
-       public Vector(int x, int y)
+        public Vector(int x, int y)
         {
             X = x;
             Y = y;
         }
-
     }
 }

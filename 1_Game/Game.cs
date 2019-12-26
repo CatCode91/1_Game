@@ -34,7 +34,11 @@ namespace _1_Game
         {
             Point p = player.Point;
             moveController.DoStep(cli,ref p);
-            player.Move(p, gameField.GetMaterial(p));
+
+            if (player.Point != p)
+            {
+                player.Move(p, gameField.GetMaterial(p));
+            }
         }
 
         private void Player_Moving(IMovable sender, MoveEventArgs e)

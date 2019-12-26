@@ -65,6 +65,18 @@ namespace _1_Game
             return new Point {X = (p.X + v.X), Y = (p.Y + v.Y)};
         }
 
+        public static bool operator !=(Point p1, Point p2)
+        {
+            bool result;
+            return result = ((p1.X != p2.X) || (p1.Y != p2.Y)) ? true : false;
+        }
+
+        public static bool operator ==(Point p1, Point p2)
+        {
+            bool result;
+            return result = ((p1.X == p2.X) & (p1.Y == p2.Y)) ? true : false;
+        }
+
         public override string ToString()
         {
             return $"X:{X.ToString()} Y:{Y.ToString()}";
