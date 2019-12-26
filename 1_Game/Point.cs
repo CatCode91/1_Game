@@ -8,65 +8,65 @@ namespace _1_Game
     public class Point
     {
         //в сетеррах валидируются значения, чтоб координаты не выходили за пределы окна
-        private int x;
+        private int _x;
         public int X
         {
             get
             {
-                return x;
+                return _x;
             }
 
             set
             {
-                x = value;
-
-                if (x > (Game.Width-1))
+                _x = value;
+                if (_x > (Game.Width-1))
                 {
-                    x = Game.Width-1;
+                    _x = Game.Width-1;
                 }
 
-                if (x < 0)
+                if (_x < 0)
                 {
-                    x = 0;
+                    _x = 0;
                 }
-
             }
         }
 
-        private int y;
+        private int _y;
         public int Y
         {
             get
             {
-                return y;
+                return _y;
             }
 
             set
             {
-                y = value;
-
-                if (y > (Game.Height-1))
+                _y = value;
+                if (_y > (Game.Height-1))
                 {
-                    y = (Game.Height-1);
+                    _y = (Game.Height-1);
                 }
 
-                if (y < 0)
+                if (_y < 0)
                 {
-                    y = 0;
+                    _y = 0;
                 }
-
             }
         }
 
-        public Point(int x, int y)
+        public Point()
         {
-            this.x = x;
-            this.y = y;
+            _x = 0;
+            _y = 0;
+        }
+
+        public static Point operator +(Point p, Vector v)
+        {
+            return new Point {X = (p.X + v.X), Y = (p.Y + v.Y)};
         }
 
         public override string ToString()
         {
-
             return $"X:{X.ToString()} Y:{Y.ToString()}";
         }
     }

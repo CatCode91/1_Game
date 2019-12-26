@@ -4,7 +4,8 @@ using System.Text;
 
 namespace _1_Game
 {
-    public delegate void MoveStateHandler(object sender,MoveEventArgs e);
+    public delegate void MoveStateHandler(IMovable sender, MoveEventArgs e);
+
 
     public class MoveEventArgs
     {

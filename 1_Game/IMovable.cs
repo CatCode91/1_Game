@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _1_Game
 {
-    interface IMovable
+    public interface IMovable
     {
         Point Point { get; }
         void Move(Point point, Material material);

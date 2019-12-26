@@ -13,47 +13,31 @@ namespace _1_Game
         public static int Height { get; private set; } 
         public static int Width { get; private set; }
 
-        GameField gamefield;
-        Player player;
-        List<Enemy> enemies = new List<Enemy>(10);
-        List<Bonus> bonuses = new List<Bonus>(7);
+        private GameField gameField;
+        private Player player;
+        private List<Enemy> enemies = new List<Enemy>(10);
+        private List<Bonus> bonuses = new List<Bonus>(7);
+
+        private MoveController moveController = new MoveController();
 
         public Game(int width,int height)
         {
             Width = width;
             Height = height;
 
-            gamefield = new GameField(width, height);
+            gameField = new GameField(width, height);
             player = new Player();
             player.Moving += Player_Moving;
         }
 
-        public void PlayerMoveController()
+        public void PlayerMove(ConsoleKey cli)
         {
             Point p = player.Point;
-
-            ConsoleKeyInfo cki = Console.ReadKey(true);
-            switch (cki.Key)
-            {
-                case (ConsoleKey.UpArrow):
-                    p.Y++;
-                    break;
-                case (ConsoleKey.DownArrow):
-                   p.Y--;
-                    break;
-                case (ConsoleKey.LeftArrow):
-                   p.X--;
-                    break;
-                case (ConsoleKey.RightArrow):
-                   p.X++;
-                    break;
-                default:
-                    break;
-            }
-            player.Move(p,gamefield.Field[p.X,p.Y]);
+            moveController.DoStep(cli,ref p);
+            player.Move(p, gameField.GetMaterial(p));
         }
 
-        private void Player_Moving(object sender, MoveEventArgs e)
+        private void Player_Moving(IMovable sender, MoveEventArgs e)
         {
             Console.WriteLine($"Игрок находится: {player.Point}");
             //после передвижения игрока проверяем столкновения с другими объектами
@@ -61,18 +45,19 @@ namespace _1_Game
             //проверяем выполнение условий для завершения игры
             CheckGameStatus();
         }
-
-        private void Enemy_Moving(object sender, MoveEventArgs e)
+  
+        private void Enemy_Moving(IMovable sender, MoveEventArgs e)
         {
-            //при перемещении врага, проверяем столкновение с игроком
-            var enemy = (Enemy)sender;
-
-            if (enemy.Point == player.Point)
+            if (sender.Point == player.Point)
             {
-                enemy.SetDamage(player);
-            }
+                if (sender is Enemy)
+                {
+                    Enemy enemy = (Enemy)sender;
+                    enemy.SetDamage(player);
+                }
 
-            CheckGameStatus();
+                CheckGameStatus();
+            }           
         }
 
         private void PlayerCollisions(MoveEventArgs e)

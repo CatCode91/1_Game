@@ -17,5 +17,10 @@ namespace _1_Game.Field
         {
             Field = new Material[width,height];
         }
+
+        public Material GetMaterial(Point p)
+        {
+            return Field[p.X,p.Y];
+        }
     }
 }

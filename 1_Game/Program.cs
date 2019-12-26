@@ -10,9 +10,15 @@ namespace _1_Game
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-           
+            Game game = new Game(100,100);
+
+            while (true)
+            {
+                game.PlayerMove(Console.ReadKey().Key);
+            }
         }
     }
 }

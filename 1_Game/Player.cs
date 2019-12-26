@@ -7,7 +7,7 @@ namespace _1_Game
 {
     public class Player : IMovable
     {
-        public Point Point { get; private set; } = new Point(0, 0);
+        public Point Point { get; private set; } = new Point();
 
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
@@ -49,11 +49,6 @@ namespace _1_Game
 
         public void Move(Point point, Material material)
         {
-            if (material is Water || material is Wall)
-            {
-                //не может идти
-                return;
-            }
             Point = point;
             Moving?.Invoke(this, new MoveEventArgs(Point));
         }
