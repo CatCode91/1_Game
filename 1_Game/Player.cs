@@ -47,10 +47,22 @@ namespace _1_Game
             }
         }
 
-        public void Move(Point point, Material material)
+        public void Move(Vector v, Material m)
         {
-            Point = point;
+           m.BaseSpeed
+
+
             Moving?.Invoke(this, new MoveEventArgs(Point));
+        }
+
+        public int GetSpeed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Point GetPoint()
+        {
+            throw new NotImplementedException();
         }
     }
 }

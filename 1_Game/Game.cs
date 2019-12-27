@@ -31,13 +31,12 @@ namespace _1_Game
         }
 
         public void PlayerMove(ConsoleKey cli)
-        {
-            Point p = player.Point;
-            moveController.DoStep(cli,ref p);
+        { 
+          Vector vector = moveController.DoStep(cli);
 
-            if (player.Point != p)
+            if (vector != null)
             {
-                player.Move(p, gameField.GetMaterial(p));
+                player.Move(vector,gameField.GetMaterial(player.Point));
             }
         }
 

@@ -49,5 +49,15 @@ namespace _1_Game.Enemies
                 Point = point;
             }
         }
+
+        public int GetSpeed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Move(Vector v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

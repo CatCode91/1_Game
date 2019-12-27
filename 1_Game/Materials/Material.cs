@@ -7,6 +7,6 @@ namespace _1_Game.Materials
     public abstract class Material
     {
         //коэффициент, который влияет на какое-нибудь свойство игрока
-        public abstract int Value { get; }
+        public abstract int BaseSpeed { get; }
     }
 }

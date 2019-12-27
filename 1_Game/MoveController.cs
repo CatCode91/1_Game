@@ -18,16 +18,16 @@ namespace _1_Game
              { ConsoleKey.RightArrow, new Vector(1,0)  },
         };
 
-        public void DoStep(ConsoleKey cli, ref Point point)
+        public Vector DoStep(ConsoleKey cli)
         {
             try
             {
-              point = point + commands[cli];
+                return commands[cli];
             }
 
             catch (KeyNotFoundException)
             {
-
+                return null;
             }
         }
     }

@@ -15,12 +15,12 @@ namespace _1_Game.Field
 
         public GameField(int width, int height)
         {
-            Field = new Material[width,height];
+            Field = new Material[width, height];
         }
 
         public Material GetMaterial(Point p)
         {
-            return Field[p.X,p.Y];
+            return Field[p.X, p.Y];
         }
     }
 }
