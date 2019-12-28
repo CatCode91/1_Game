@@ -6,11 +6,9 @@ using System.Text;
 
 namespace _1_Game
 {
-    public class MoveController
+    public class GameController
     {
-        private Vector defaultVector = new Vector(0, 0);
-
-        private Dictionary<ConsoleKey, Vector> commands = new Dictionary<ConsoleKey, Vector>
+        private Dictionary<ConsoleKey, Vector> moveCommands = new Dictionary<ConsoleKey, Vector>
         {
              { ConsoleKey.UpArrow,    new Vector(0,1)  },
              { ConsoleKey.DownArrow,  new Vector(0,-1) },
@@ -18,11 +16,11 @@ namespace _1_Game
              { ConsoleKey.RightArrow, new Vector(1,0)  },
         };
 
-        public Vector DoStep(ConsoleKey cli)
+        public Vector DoMove(ConsoleKey cli)
         {
             try
             {
-                return commands[cli];
+                return moveCommands[cli];
             }
 
             catch (KeyNotFoundException)

@@ -15,33 +15,5 @@ namespace _1_Game.Enemies
         {
             p.SetDamage(DamageValue);
         }
-
-        public override void Move(Point point, Material material)
-        {
-            if (material is Water)
-            {
-                //не может плыть
-                return;
-            }
-
-            if (material is Wall)
-            {
-                var m = (Wall)material;
-                if (m.Height > 10)
-                {
-                    //может перелететь
-                    Point = point;
-                    BaseClassEvent(new MoveEventArgs(Point));
-                    return;
-                }
-            }
-
-            else 
-            {
-                Point = point;
-                BaseClassEvent(new MoveEventArgs(Point));
-            }
-        }
-
     }
 }

@@ -8,9 +8,7 @@ namespace _1_Game
     public interface IMovable
     {
         Point Point { get; }
-        
-        int GetSpeed();
-      
+
         void Move(Vector v,Material m);
     }
 }

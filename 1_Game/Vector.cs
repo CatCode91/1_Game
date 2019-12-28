@@ -6,13 +6,20 @@ namespace _1_Game
 {
     public class Vector
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
 
         public Vector(int x, int y)
         {
             X = x;
             Y = y;
+        }
+
+        public Vector() { }
+
+        public static Vector operator *(Vector v1, int i)
+        {
+            return new Vector { X = (v1.X * i), Y = (v1.Y * i) };
         }
     }
 }

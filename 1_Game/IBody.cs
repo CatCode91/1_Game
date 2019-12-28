@@ -1,10 +1,13 @@
-﻿using System;
+﻿using _1_Game.Materials;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace _1_Game
 {
-    interface IBody
+    public interface IBody
     {
+       bool IsSwimming { get; }
+       void SetSpeed(int i);
     }
 }

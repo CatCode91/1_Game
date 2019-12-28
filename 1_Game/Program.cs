@@ -13,11 +13,11 @@ namespace _1_Game
         
         static void Main(string[] args)
         {
-            Game game = new Game(100,100);
+            Game game = new Game(10,50);
 
             while (true)
             {
-                game.PlayerMove(Console.ReadKey().Key);
+                game.MoveController(Console.ReadKey().Key);
             }
         }
     }

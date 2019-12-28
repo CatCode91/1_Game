@@ -15,16 +15,5 @@ namespace _1_Game.Enemies
             p.SetDamage(DamageValue);
         }
 
-        public override void Move(Point point, Material material)
-        {
-            //может передвигаться только в воде
-
-            if (material is Water)
-            {
-                Point = point;
-                BaseClassEvent(new MoveEventArgs(Point));
-            }
-        }
-
     }
 }

@@ -6,6 +6,15 @@ namespace _1_Game.Materials
 {
     public class Water : Material
     {
-        public override int Value => 2;
+        private int _speed = 0;
+        public override int Speed => _speed;
+
+        public override void TakeEffect(IBody obj)
+        {
+            if (obj.IsSwimming)
+            {
+                _speed = 1;
+            }
+        }
     }
 }

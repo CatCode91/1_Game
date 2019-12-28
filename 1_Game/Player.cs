@@ -5,7 +5,7 @@ using _1_Game.Materials;
 
 namespace _1_Game
 {
-    public class Player : IMovable
+    public class Player : IMovable, IBody
     {
         public Point Point { get; private set; } = new Point();
 
@@ -13,7 +13,23 @@ namespace _1_Game
         public int Strench { get; private set; } = 100;
         public int Speed { get; private set; } = 50;
 
+        public bool IsSwimming => false;
+
         public event MoveStateHandler Moving;
+
+
+        public void SetSpeed(int i)
+        {
+            Speed += i;
+            if (Speed < 0)
+            {
+                Speed = 0;
+            }
+            if (Speed > 10)
+            {
+                Speed = 10;
+            }
+        }
 
         public void SetDamage(int i)
         {
@@ -49,10 +65,9 @@ namespace _1_Game
 
         public void Move(Vector v, Material m)
         {
-           m.BaseSpeed
-
-
-            Moving?.Invoke(this, new MoveEventArgs(Point));
+            m.TakeEffect(this);
+            Point = Point + (v * m.Speed);
+            Moving?.Invoke(this, new MoveEventArgs(Point,Health));
         }
 
         public int GetSpeed()
@@ -64,5 +79,6 @@ namespace _1_Game
         {
             throw new NotImplementedException();
         }
+
     }
 }

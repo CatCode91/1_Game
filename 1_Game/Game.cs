@@ -18,7 +18,7 @@ namespace _1_Game
         private List<Enemy> enemies = new List<Enemy>(10);
         private List<Bonus> bonuses = new List<Bonus>(7);
 
-        private MoveController moveController = new MoveController();
+        private GameController gameController = new GameController();
 
         public Game(int width,int height)
         {
@@ -30,9 +30,9 @@ namespace _1_Game
             player.Moving += Player_Moving;
         }
 
-        public void PlayerMove(ConsoleKey cli)
+        public void MoveController(ConsoleKey cli)
         { 
-          Vector vector = moveController.DoStep(cli);
+            Vector vector = gameController.DoMove(cli);
 
             if (vector != null)
             {
@@ -43,6 +43,7 @@ namespace _1_Game
         private void Player_Moving(IMovable sender, MoveEventArgs e)
         {
             Console.WriteLine($"Игрок находится: {player.Point}");
+            Console.WriteLine($"Здоровье игрока: {player.Health}");
             //после передвижения игрока проверяем столкновения с другими объектами
             PlayerCollisions(e);
             //проверяем выполнение условий для завершения игры

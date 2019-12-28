@@ -6,7 +6,7 @@ using System.Text;
 
 namespace _1_Game.Enemies
 {
-    public abstract class Enemy : IMovable
+    public abstract class Enemy
     {
         public abstract int DamageValue { get; }
         public abstract void SetDamage(Player p);
@@ -16,26 +16,7 @@ namespace _1_Game.Enemies
         public event MoveStateHandler Moving;
         protected void BaseClassEvent(MoveEventArgs e)
         {
-            Moving?.Invoke(this, e);
-
-        }
-
-        public virtual void Move(Point point, Material material)
-        {
-            if (material is Water)
-            {
-                //не может плыть
-                return;
-            }
-
-            if (material is Wall)
-            {
-                //не может проходить сквозь стены
-                return;
-            }
-
-            Point = point;
-            BaseClassEvent(new MoveEventArgs(Point));
+           // Moving?.Invoke(this, e);
         }
 
         //для установки первоначальных координат
@@ -56,6 +37,11 @@ namespace _1_Game.Enemies
         }
 
         public void Move(Vector v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Move(Vector v, Material m)
         {
             throw new NotImplementedException();
         }

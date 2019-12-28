@@ -77,6 +77,26 @@ namespace _1_Game
             return result = ((p1.X == p2.X) & (p1.Y == p2.Y)) ? true : false;
         }
 
+        public override int GetHashCode()
+        {
+            int hashcode = X.GetHashCode();
+            hashcode = 31 * hashcode + Y.GetHashCode();
+            return hashcode;
+        }
+
+        public override bool Equals(object obj)  //Перегрузка метода 
+        {
+            bool result = false;
+
+            if (obj is Point)
+            {
+                Point p2 = (Point)obj;
+                result = ((X == p2.X) & (Y == p2.Y)) ? true : false;
+            }
+
+            return result;
+        }
+
         public override string ToString()
         {
             return $"X:{X.ToString()} Y:{Y.ToString()}";
