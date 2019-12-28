@@ -4,15 +4,13 @@ using System.Text;
 
 namespace _1_Game.Materials
 {
-    public class Fire : Material
+    public class Road : Material
     {
-        public override int DampingSpeed => 1;
-
-        private int _damageFromFire = 3;
+        public override int DampingSpeed => 0;
 
         public override void ApplyEffects(IBody obj)
         {
-            obj.GetDamage(_damageFromFire);
+            obj.SetStrench(-1);
         }
     }
 }

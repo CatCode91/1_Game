@@ -13,11 +13,13 @@ namespace _1_Game
     {
         public Point Point { get; private set; }
         public int Health { get; private set; }
+        public string Text { get; private set; }
 
-        public MoveEventArgs(Point _p,int health)
+        public MoveEventArgs(Point _p,int health, string text)
         {
             Point = _p;
             Health = health;
+            Text = text;
         }
     }
 }

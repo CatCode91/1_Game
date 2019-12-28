@@ -25,6 +25,8 @@ namespace _1_Game
             Width = width;
             Height = height;
 
+            bonuses.Add(new Apple(new Point {X=12,Y=24}));
+
             gameField = new GameField(width, height);
             player = new Player();
             player.Moving += Player_Moving;
@@ -36,6 +38,7 @@ namespace _1_Game
 
             if (vector != null)
             {
+               // передает желаемое направление и передает материал согласно текущих координат игрока
                 player.Move(vector,gameField.GetMaterial(player.Point));
             }
         }
@@ -44,6 +47,8 @@ namespace _1_Game
         {
             Console.WriteLine($"Игрок находится: {player.Point}");
             Console.WriteLine($"Здоровье игрока: {player.Health}");
+            Console.WriteLine($"Здоровье из события: {e.Health}");
+            Console.WriteLine($"Нахожусь на: {e.Text}");
             //после передвижения игрока проверяем столкновения с другими объектами
             PlayerCollisions(e);
             //проверяем выполнение условий для завершения игры
@@ -77,13 +82,13 @@ namespace _1_Game
             }
 
             //проверяем столкновение с бонусом
-            foreach (Bonus s in bonuses)
+            for (int i =0; i<bonuses.Count;i++)
             {
-                if (e.Point == s.Point)
+                if (e.Point == bonuses[i].Point)
                 {
-                    s.ApplyBonus(player);
-                    Console.WriteLine($"Здоровье увеличилось {s.HelpValue}");
-                    bonuses.Remove(s);
+                    bonuses[i].ApplyBonus(player);
+                    Console.WriteLine($"Здоровье увеличилось {bonuses[i].HelpValue}");
+                    bonuses.Remove(bonuses[i]);
                 }
             }
         }

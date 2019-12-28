@@ -15,8 +15,9 @@ namespace _1_Game.Bonuses
         /// <summary>Применение бонуса к игроку</summary>
         public abstract void ApplyBonus(Player p);
 
-        public Bonus()
+        public Bonus(Point point)
         {
+            Point = point;
             ChangeBonus();
         }
     }

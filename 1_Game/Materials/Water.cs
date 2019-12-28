@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1_Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,14 +7,18 @@ namespace _1_Game.Materials
 {
     public class Water : Material
     {
-        private int _speed = 0;
-        public override int Speed => _speed;
+        private int _dSpeed;
+        public override int DampingSpeed => _dSpeed;
 
-        public override void TakeEffect(IBody obj)
+        public override void ApplyEffects(IBody obj)
         {
-            if (obj.IsSwimming)
+            _dSpeed = obj.Speed;
+
+            if (obj is ISwimming)
             {
-                _speed = 1;
+                ISwimming swimming = (ISwimming)obj;
+                
+                swimming.Swim();             
             }
         }
     }

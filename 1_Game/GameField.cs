@@ -13,14 +13,30 @@ namespace _1_Game.Field
         //двумерный массив, представляющий собой координатную плоскость игрового поля
         public Material[,] Field { get; private set; }
 
+        public Material[] materials = new Material[] { new Fire(),new Water(),new Wall(),new Grass(),new Road() };
+
+        public Random random = new Random();
+
         public GameField(int width, int height)
         {
             Field = new Material[width, height];
+            FieldFill(width,height);
         }
 
         public Material GetMaterial(Point p)
         {
             return Field[p.X, p.Y];
+        }
+
+        private void FieldFill(int width, int height)
+        {
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    Field[i, j] = materials[random.Next(0,materials.Length)];
+                }
+            }
         }
     }
 }

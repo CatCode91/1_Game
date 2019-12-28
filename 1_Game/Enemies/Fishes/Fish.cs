@@ -12,7 +12,7 @@ namespace _1_Game.Enemies
 
         public override void SetDamage(Player p)
         {
-            p.SetDamage(DamageValue);
+            p.GetDamage(DamageValue);
         }
 
     }

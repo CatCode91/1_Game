@@ -12,6 +12,11 @@ namespace _1_Game.Bonuses
     public class Cherry : Bonus
     {
         private int _helpValue = 8;
+
+        public Cherry(Point point) : base(point)
+        {
+        }
+
         public override int HelpValue => _helpValue;
 
         public override void ApplyBonus(Player p)

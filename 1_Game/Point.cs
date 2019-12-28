@@ -60,6 +60,7 @@ namespace _1_Game
             _y = 0;
         }
 
+        #region Overrided operators
         public static Point operator +(Point p, Vector v)
         {
             return new Point {X = (p.X + v.X), Y = (p.Y + v.Y)};
@@ -101,6 +102,7 @@ namespace _1_Game
         {
             return $"X:{X.ToString()} Y:{Y.ToString()}";
         }
+        #endregion
     }
 }
 
