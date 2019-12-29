@@ -21,5 +21,10 @@ namespace _1_Game
             Health = health;
             Text = text;
         }
+
+        public MoveEventArgs(string text)
+        {
+            Text = text;
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace _1_Game
        int Health { get; }
        int Speed { get; }
        int Strench { get; }
+       int Weight { get; }
 
        void SetStrench(int i);
 

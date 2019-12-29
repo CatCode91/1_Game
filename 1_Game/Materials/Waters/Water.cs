@@ -5,19 +5,17 @@ using System.Text;
 
 namespace _1_Game.Materials
 {
+    //Вода, непроходима если объект не реализует интерфейс ISwimming
     public class Water : Material
     {
-        private int _dSpeed;
-        public override int DampingSpeed => _dSpeed;
+
+        public override bool IsMovable => false;
 
         public override void ApplyEffects(IBody obj)
         {
-            _dSpeed = obj.Speed;
-
             if (obj is ISwimming)
             {
                 ISwimming swimming = (ISwimming)obj;
-                
                 swimming.Swim();             
             }
         }

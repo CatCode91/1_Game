@@ -7,15 +7,12 @@ namespace _1_Game
 {
     public class Player : IMovable, IBody
     {
-        public bool IsSwimming => true;
-        public bool IsFlying => false;
-
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
         public int Speed { get; private set; } = 10;
+        public int Weight { get; private set; } = 7;
 
         public Point Point { get; private set; } = new Point();
-      
 
         public event MoveStateHandler Moving;
 
@@ -68,9 +65,15 @@ namespace _1_Game
         {
             material.ApplyEffects(this);
 
-            Point = Point + (vector * (Speed - material.DampingSpeed));
-
-            Moving?.Invoke(this, new MoveEventArgs(Point,Health,material.GetType().Name));
+            if (material.IsMovable)
+            {
+                Point = Point + vector;
+                Moving?.Invoke(this, new MoveEventArgs(Point, Health, material.GetType().Name));
+            }
+            else
+            {
+                Moving?.Invoke(this, new MoveEventArgs($"{material.GetType()} - непроходимый материал"));
+            }
         }
     }
 }

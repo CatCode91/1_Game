@@ -6,7 +6,7 @@ namespace _1_Game.Materials
 {
     public abstract class Material
     {
-        public abstract int DampingSpeed { get; }
+        public abstract bool IsMovable { get;}
 
         public abstract void ApplyEffects(IBody obj);
     }

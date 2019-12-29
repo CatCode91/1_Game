@@ -15,8 +15,6 @@ namespace _1_Game.Field
 
         public Material[] materials = new Material[] { new Fire(),new Water(),new Wall(),new Grass(),new Road() };
 
-        public Random random = new Random();
-
         public GameField(int width, int height)
         {
             Field = new Material[width, height];
@@ -30,6 +28,8 @@ namespace _1_Game.Field
 
         private void FieldFill(int width, int height)
         {
+            Random random = new Random();
+
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
