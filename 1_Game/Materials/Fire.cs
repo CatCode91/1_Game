@@ -6,8 +6,9 @@ namespace _1_Game.Materials
 {
     public class Fire : Material
     {
-        public override bool IsMovable => true;
+        public override string Name => "Огонь!";
         private int _damageFromFire = 3;
+        public int DamageFromFire => _damageFromFire;
 
         public Fire()
         {
@@ -21,15 +22,16 @@ namespace _1_Game.Materials
             DamageChanging();
         }
 
-        public override void ApplyEffects(IBody obj)
-        {
-            obj.GetDamage(_damageFromFire);
-        }
-
         private int DamageChanging()
         {
             //тут какие-нибудь чудеса для изменения величины урона от огня
             return  _damageFromFire = 3;
+        }
+
+        public override bool IsMovable(IBody obj)
+        {
+            obj.GetDamage(DamageFromFire);
+            return true;
         }
     }
 }

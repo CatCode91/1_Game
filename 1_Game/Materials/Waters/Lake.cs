@@ -7,13 +7,20 @@ namespace _1_Game.Materials.Waters
 {
     public class Lake : Water
     {
+        public override string Name => "Озеро";
+        public override int StrenchForSwim => 1;
+
         public bool isFishible { get; }
         public int  Deep { get; }
 
-
-        private Fish Fishing()
+        public Fish Fishing()
         {
-            return new Shark();
+            if (isFishible)
+            {
+                return new Shark();
+            }
+
+            return null;
         }
     }
 }

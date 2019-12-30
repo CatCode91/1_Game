@@ -6,44 +6,87 @@ using System.Text;
 
 namespace _1_Game.Enemies
 {
-    public abstract class Enemy
+    public abstract class Enemy : IBody, IMovable
     {
         public abstract int DamageValue { get; }
-        public abstract void SetDamage(Player p);
-
+        
         //Point set protected, чтоб можно было переопределять метод Move в наследниках
         public Point Point { get; protected set; }
+
+        protected  int EnemyHealth = 10;
+        public int Health => EnemyHealth;
+
+        protected int EnemyStrench = 10;
+        public int Strench => EnemyStrench;
+
+        protected int EnemyWeight = 10;
+        public int Weight => EnemyWeight;
+
         public event MoveStateHandler Moving;
         protected void BaseClassEvent(MoveEventArgs e)
         {
            // Moving?.Invoke(this, e);
         }
 
-        //для установки первоначальных координат
-        public void SetStartPosition(Point point)
+        public void SetStartPosition(Point p)
         {
-            /*после установки первоначального значения, возможна установка значений Pointa только
-            из метода Move
-             */
-            if (Point == null)
+            Point = p;
+        }
+
+        public void SetHealth(int i)
+        {
+            EnemyHealth += i;
+            if (EnemyHealth < 0)
             {
-                Point = point;
+                EnemyHealth = 0;
+            }
+
+            if (EnemyHealth > 100)
+            {
+                EnemyHealth = 100;
             }
         }
 
-        public int GetSpeed()
+        public void SetStrench(int i)
         {
-            throw new NotImplementedException();
+            EnemyStrench -= i;
+            if (EnemyStrench < 0)
+            {
+                EnemyStrench = 0;
+            }
         }
 
-        public void Move(Vector v)
+        public void GetDamage(int i)
         {
-            throw new NotImplementedException();
+            EnemyHealth -= i;
+            if (EnemyHealth < 0)
+            {
+                EnemyHealth = 0;
+            }
+
+            if (EnemyHealth > 100)
+            {
+                EnemyHealth = 100;
+            }
         }
 
-        public void Move(Vector v, Material m)
+        public virtual void SetDamage(Player p)
         {
-            throw new NotImplementedException();
+            p.GetDamage(DamageValue);
+        }
+
+        public void Move(Vector vector, Material material)
+        {
+            if (material.IsMovable(this))
+            {
+                Point = Point + vector;
+                Moving?.Invoke(this, new MoveEventArgs(Point, material.GetType().Name));
+            }
+
+            else
+            {
+                Moving?.Invoke(this, new MoveEventArgs(Point, $"{material.GetType()} - непроходимый материал"));
+            }
         }
     }
 }

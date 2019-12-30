@@ -11,7 +11,6 @@ namespace _1_Game.Bonuses
 
         /// <summary>Используйте для изменения свойства у бонуса</summary>
         protected abstract void ChangeBonus();
-
         /// <summary>Применение бонуса к игроку</summary>
         public abstract void ApplyBonus(Player p);
 

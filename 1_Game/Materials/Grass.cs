@@ -4,20 +4,23 @@ using System.Text;
 
 namespace _1_Game.Materials
 {
-    class Grass : Material
+    public class Grass : Material
     {
-        private bool _isMovable = false;
-        public override bool IsMovable => _isMovable;
+        public override string Name => "Трава";
+
+        public virtual int LeavesCount { get; } = 1;
 
         private int _grassHeight = 5;
-        protected int GrassHeight => _grassHeight;
+        public int GrassHeight => _grassHeight;
 
-        public override void ApplyEffects(IBody obj)
+        public override bool IsMovable(IBody obj)
         {
-            if (obj.Strench < 50 & GrassHeight > 10)
+            if (obj.Strench < 30 | GrassHeight > 40)
             {
-                _isMovable = true;
+                return false;
             }
+
+            return true;
         }
 
         protected virtual int GrowGrass()

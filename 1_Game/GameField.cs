@@ -1,6 +1,8 @@
 ﻿using _1_Game.Materials;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace _1_Game.Field
@@ -13,7 +15,7 @@ namespace _1_Game.Field
         //двумерный массив, представляющий собой координатную плоскость игрового поля
         public Material[,] Field { get; private set; }
 
-        public Material[] materials = new Material[] { new Fire(),new Water(),new Wall(),new Grass(),new Road() };
+        public Material[] materials;
 
         public GameField(int width, int height)
         {
@@ -26,15 +28,25 @@ namespace _1_Game.Field
             return Field[p.X, p.Y];
         }
 
+        private Material RandomMaterial()
+        {
+            Random r = new Random();
+            Type baseType = typeof(Material);
+            var allDerivedTypes = baseType.Assembly.ExportedTypes.Where(t => baseType.IsAssignableFrom(t)).Where(t => t.IsAbstract ==false).ToArray();
+
+            Material mat = Activator.CreateInstance(Type.GetType(allDerivedTypes[r.Next(0,allDerivedTypes.Length)].FullName)) as Material;
+            return mat;
+
+        }
+
         private void FieldFill(int width, int height)
         {
-            Random random = new Random();
 
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
-                    Field[i, j] = materials[random.Next(0,materials.Length)];
+                    Field[i, j] = RandomMaterial();
                 }
             }
         }

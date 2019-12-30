@@ -9,25 +9,11 @@ namespace _1_Game
     {
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
-        public int Speed { get; private set; } = 10;
         public int Weight { get; private set; } = 7;
 
         public Point Point { get; private set; } = new Point();
 
         public event MoveStateHandler Moving;
-
-        public void SetSpeed(int i)
-        {
-            Speed += i;
-            if (Speed < 0)
-            {
-                Speed = 0;
-            }
-            if (Speed > 10)
-            {
-                Speed = 10;
-            }
-        }
 
         public void GetDamage(int i)
         {
@@ -63,16 +49,14 @@ namespace _1_Game
 
         public void Move(Vector vector, Material material)
         {
-            material.ApplyEffects(this);
-
-            if (material.IsMovable)
+            if (material.IsMovable(this))
             {
                 Point = Point + vector;
-                Moving?.Invoke(this, new MoveEventArgs(Point, Health, material.GetType().Name));
+                Moving?.Invoke(this, new MoveEventArgs(Point, material.GetType().Name));
             }
             else
             {
-                Moving?.Invoke(this, new MoveEventArgs($"{material.GetType()} - непроходимый материал"));
+                Moving?.Invoke(this, new MoveEventArgs(Point, $"{material.GetType()} - непроходимый материал"));
             }
         }
     }

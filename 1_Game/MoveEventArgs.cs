@@ -12,18 +12,11 @@ namespace _1_Game
     public class MoveEventArgs : EventArgs
     {
         public Point Point { get; private set; }
-        public int Health { get; private set; }
         public string Text { get; private set; }
 
-        public MoveEventArgs(Point _p,int health, string text)
+        public MoveEventArgs(Point _p, string text)
         {
             Point = _p;
-            Health = health;
-            Text = text;
-        }
-
-        public MoveEventArgs(string text)
-        {
             Text = text;
         }
     }

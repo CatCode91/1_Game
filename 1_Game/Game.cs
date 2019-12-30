@@ -1,5 +1,6 @@
 ﻿using _1_Game.Bonuses;
 using _1_Game.Enemies;
+using _1_Game.Enemies.Animals;
 using _1_Game.Field;
 using System;
 using System.Collections.Generic;
@@ -33,13 +34,16 @@ namespace _1_Game
         }
 
         public void MoveController(ConsoleKey cli)
-        { 
+        {
+            Enemy wb = new WhiteBear();
             Vector vector = gameController.DoMove(cli);
 
             if (vector != null)
             {
-               // передает желаемое направление и передает материал согласно текущих координат игрока
-                player.Move(vector,gameField.GetMaterial(player.Point));
+               // передает желаемое направление и материал в той клетке
+                player.Move(vector,gameField.GetMaterial(player.Point+vector));
+                wb.SetStartPosition(new Point {X= 12, Y= 12 });
+                wb.Move(vector, gameField.GetMaterial(player.Point + vector));
             }
         }
 
@@ -47,7 +51,6 @@ namespace _1_Game
         {
             Console.WriteLine($"Игрок находится: {player.Point}");
             Console.WriteLine($"Здоровье игрока: {player.Health}");
-            Console.WriteLine($"Здоровье из события: {e.Health}");
             Console.WriteLine($"Нахожусь на: {e.Text}");
             //после передвижения игрока проверяем столкновения с другими объектами
             PlayerCollisions(e);

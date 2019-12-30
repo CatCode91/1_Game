@@ -6,6 +6,6 @@ namespace _1_Game.Enemies.Fishes
 {
     class BlueWhale : Whale
     {
-        public string Color { get; } = "Blue";
+        public override string Color => "Голубой";
     }
 }

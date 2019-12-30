@@ -8,7 +8,6 @@ namespace _1_Game
     public interface IBody
     {
        int Health { get; }
-       int Speed { get; }
        int Strench { get; }
        int Weight { get; }
 

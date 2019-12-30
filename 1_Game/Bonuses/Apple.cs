@@ -11,12 +11,11 @@ namespace _1_Game.Bonuses
     public class Apple : Bonus
     {
         private int _helpValue = 7;
+        public override int HelpValue => _helpValue;
 
         public Apple(Point point) : base(point)
         {
         }
-
-        public override int HelpValue => _helpValue;
 
         public override void ApplyBonus(Player p)
         {
@@ -28,9 +27,6 @@ namespace _1_Game.Bonuses
             GrowApple();
         }
 
-        /// <summary>
-        /// Метод "поспевания" яблока 
-        /// </summary>
         private async void GrowApple()
         {
             while (HelpValue <= 50)

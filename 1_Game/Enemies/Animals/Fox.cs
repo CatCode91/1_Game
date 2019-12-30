@@ -6,9 +6,7 @@ namespace _1_Game.Enemies.Animals.ForestAnimals
 {
     class Fox : Animal
     {
-        public override int Strength => 5;
-
-        public override int Speed => 11;
+        public override int DamageValue => 12;
 
         public override void Roar()
         {

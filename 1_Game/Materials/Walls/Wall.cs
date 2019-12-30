@@ -6,9 +6,7 @@ namespace _1_Game.Materials
 {
     //обычная стена, непроходима, если объект не реализует интерфейс IFLyable
     public class Wall : Material
-    {   
-        protected bool Movable = false;
-        public override bool IsMovable => Movable;
+    {         
         private readonly int _height = 10;
         protected virtual int Height => _height;
 
@@ -22,17 +20,18 @@ namespace _1_Game.Materials
             _height = height;
         }
 
-        public override void ApplyEffects(IBody obj)
-        {        
+        public override bool IsMovable(IBody obj)
+        {
             if (obj is IFlyable)
             {
                 IFlyable flyable = (IFlyable)obj;
 
                 if (flyable.FlyingHeight > _height)
                 {
-                    Movable = true;
+                    flyable.Fly();
                 }
             }
+            return false;
         }
     }
 }

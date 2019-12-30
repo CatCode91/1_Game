@@ -8,16 +8,20 @@ namespace _1_Game.Materials
     //Вода, непроходима если объект не реализует интерфейс ISwimming
     public class Water : Material
     {
+        public override string Name => "Вода";
 
-        public override bool IsMovable => false;
+        public virtual int StrenchForSwim => 12;
 
-        public override void ApplyEffects(IBody obj)
+        public override bool IsMovable(IBody obj)
         {
             if (obj is ISwimming)
             {
                 ISwimming swimming = (ISwimming)obj;
-                swimming.Swim();             
+                obj.SetStrench(StrenchForSwim);
+                swimming.Swim();
             }
+
+            return false;
         }
     }
 }

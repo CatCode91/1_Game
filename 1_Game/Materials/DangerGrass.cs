@@ -7,6 +7,9 @@ namespace _1_Game.Materials
     //трава наносящая урон игроку
     class DangerGrass : Grass
     {
+        public override string Name => "Жгучая трава";
+        public override int LeavesCount => 33;
+
         private int _damage = 5;
         public int Damage => _damage;
 
@@ -15,12 +18,14 @@ namespace _1_Game.Materials
             DamageChanging();
         }
 
-        public override void ApplyEffects(IBody obj)
+        public override bool IsMovable(IBody obj)
         {
             if (obj is Player)
             {
-                obj.GetDamage(_damage);
+                obj.GetDamage(Damage);
             }
+
+            return true;
         }
 
         private int DamageChanging() {

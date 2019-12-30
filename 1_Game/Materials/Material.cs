@@ -6,8 +6,8 @@ namespace _1_Game.Materials
 {
     public abstract class Material
     {
-        public abstract bool IsMovable { get;}
+        public abstract string Name { get; }
 
-        public abstract void ApplyEffects(IBody obj);
+        public abstract bool IsMovable(IBody obj); 
     }
 }
