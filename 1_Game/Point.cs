@@ -60,7 +60,7 @@ namespace _1_Game
             _y = 0;
         }
 
-        #region Overrided operators
+        #region Overridden operators
 
         public static Point operator +(Point p, Vector v)
         {
