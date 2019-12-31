@@ -9,8 +9,8 @@ namespace _1_Game.Materials
     {
         public override string Name => "Дорога";
 
-        public virtual string RoadColor { get; } = "Черный";
-        public virtual int SurfaceCoef { get; } = 13;
+        public string RoadColor { get; } = "Черный";
+        public int SurfaceCoef { get; } = 13;
 
         public override bool IsMovable(IBody obj)
         {
