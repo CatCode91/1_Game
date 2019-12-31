@@ -9,12 +9,10 @@ using System;
 namespace _1_Game
 {
     class Program
-    {
-        
+    {  
         static void Main(string[] args)
         {
             Game game = new Game(10,50);
-            
 
             while (true)
             {

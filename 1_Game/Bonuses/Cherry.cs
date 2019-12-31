@@ -14,8 +14,11 @@ namespace _1_Game.Bonuses
         private int _helpValue = 8;
         public override int HelpValue => _helpValue;
 
+        public virtual string Color => "Красный";
+
         public Cherry(Point point) : base(point)
         {
+
         }
 
         public override void ApplyBonus(Player p)
@@ -25,8 +28,7 @@ namespace _1_Game.Bonuses
 
         protected override void ChangeBonus()
         {
-            //что-то происходит с _helpValue;
-          
+            //что-то происходит с _helpValue; 
         }
     }
 }

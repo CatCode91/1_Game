@@ -13,8 +13,12 @@ namespace _1_Game.Bonuses
         private int _helpValue = 20;
         public override int HelpValue => _helpValue;
 
+        private int _size = 30;
+        public override int Size => _size;
+
         public BigApple(Point point) : base(point)
         {
+           
         }
 
         protected override void ChangeBonus()
@@ -22,13 +26,5 @@ namespace _1_Game.Bonuses
             GrowApple();
         }
 
-        private async void GrowApple()
-        {
-            while (HelpValue <= 100)
-            {
-                _helpValue += 1;
-                await Task.Delay(3000);
-            }
-        }
     }
 }

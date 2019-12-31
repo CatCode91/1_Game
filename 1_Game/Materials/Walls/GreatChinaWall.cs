@@ -7,6 +7,12 @@ namespace _1_Game.Materials.Walls
     //Великая китайская стена, непроходима и непролетаема, нужно договариватся
     public class GreatChinaWall : Wall
     {
+        private int _height = 100;
+        public override int Height => _height;
+
+        private string _name = "Великая китайская стена!";
+        public override string Name => _name;
+
         private bool dogovor = false;
         public bool Dogovor => dogovor;
 
@@ -26,13 +32,21 @@ namespace _1_Game.Materials.Walls
             return dogovor;
         }
 
-        public void CheckNation(object sender)
+        public override int GetDamageWall(int i)
         {
-            //тут должно проверится нужное свойство объекта
-            if (sender.ToString() == "Китаец")
+            _height -= i;
+
+            if (_height < 10)
             {
-                dogovor = true;
+                _name = "не такая уже она и великая эта стена!";
             }
+
+            if (_height < 0)
+            {
+                _height = 0;
+            }
+
+            return _height;
         }
     }
 }

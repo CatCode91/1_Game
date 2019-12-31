@@ -4,6 +4,8 @@ using System.Text;
 
 namespace _1_Game
 {
+    //направление движения
+
     public class Vector
     {
         public int X { get; private set; }

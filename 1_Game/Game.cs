@@ -26,8 +26,6 @@ namespace _1_Game
             Width = width;
             Height = height;
 
-            bonuses.Add(new Apple(new Point {X=12,Y=24}));
-
             gameField = new GameField(width, height);
             player = new Player();
             player.Moving += Player_Moving;
@@ -35,18 +33,16 @@ namespace _1_Game
 
         public void MoveController(ConsoleKey cli)
         {
-            Enemy wb = new WhiteBear();
             Vector vector = gameController.DoMove(cli);
 
             if (vector != null)
             {
-               // передает желаемое направление и материал в той клетке
+                //передает желаемое направление и материал в клетке по направлению
                 player.Move(vector,gameField.GetMaterial(player.Point+vector));
-                wb.SetStartPosition(new Point {X= 12, Y= 12 });
-                wb.Move(vector, gameField.GetMaterial(player.Point + vector));
             }
         }
 
+        //метод события Move в Player
         private void Player_Moving(IMovable sender, MoveEventArgs e)
         {
             Console.WriteLine($"Игрок находится: {player.Point}");
@@ -58,6 +54,7 @@ namespace _1_Game
             CheckGameStatus();
         }
   
+        //метод, события Move в Enemy
         private void Enemy_Moving(IMovable sender, MoveEventArgs e)
         {
             if (sender.Point == player.Point)

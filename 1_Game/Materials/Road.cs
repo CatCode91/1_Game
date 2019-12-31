@@ -8,14 +8,19 @@ namespace _1_Game.Materials
     public class Road : Material
     {
         public override string Name => "Дорога";
-        public int Surface { get; } = 13;
-        public string Color { get; } = "Черный";
+        public virtual string Color { get; } = "Черный";
+        public virtual int SurfaceCoef { get; } = 13;
 
         public override bool IsMovable(IBody obj)
         {
             if (obj is Player && obj.Health > 10)
             {
                 obj.SetStrench(-1);
+
+                if (SurfaceCoef > 40 & obj.Strench < 50)
+                {
+                    return false;
+                }
             }
 
             return true;

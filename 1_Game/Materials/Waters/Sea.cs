@@ -15,11 +15,12 @@ namespace _1_Game.Materials.Waters
            PolnuyKapec          
         }
 
+        public virtual int Size => 15;
         public override int StrenchForSwim => 15;
         public override string Name => "Море";
 
-        protected int _wavesHeight = 1;
-        public int WavesHeight => _wavesHeight;
+        private int _wavesHeight = 1;
+        public int WavesHeight => WavesHeight;
      
         public Sea()
         {

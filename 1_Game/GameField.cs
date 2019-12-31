@@ -15,19 +15,19 @@ namespace _1_Game.Field
         //двумерный массив, представляющий собой координатную плоскость игрового поля
         public Material[,] Field { get; private set; }
 
-        public Material[] materials;
-
         public GameField(int width, int height)
         {
             Field = new Material[width, height];
             FieldFill(width,height);
         }
 
+        //возвращает материал по координатам
         public Material GetMaterial(Point p)
         {
             return Field[p.X, p.Y];
         }
 
+        //возращает рандомный материал
         private Material RandomMaterial()
         {
             Random r = new Random();
@@ -39,6 +39,7 @@ namespace _1_Game.Field
 
         }
 
+        //заполнение игрового поля материалами
         private void FieldFill(int width, int height)
         {
 

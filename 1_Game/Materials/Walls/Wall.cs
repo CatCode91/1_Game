@@ -7,8 +7,11 @@ namespace _1_Game.Materials
     //обычная стена, непроходима, если объект не реализует интерфейс IFLyable
     public class Wall : Material
     {         
-        private readonly int _height = 10;
-        protected virtual int Height => _height;
+        private int _height = 55;
+        public virtual int Height => _height;
+
+        private string _name = "Стена";
+        public override string Name => _name;
 
         public Wall()
         {
@@ -18,6 +21,23 @@ namespace _1_Game.Materials
         public Wall(int height)
         {
             _height = height;
+        }
+
+        public virtual int GetDamageWall(int i)
+        {
+            _height -= i;
+
+            if (_height < 10)
+            {
+                _name = "Стена почти разрушена!";
+            }
+
+            if (_height < 0)
+            {
+                _height = 0;
+            }
+
+            return _height;
         }
 
         public override bool IsMovable(IBody obj)
@@ -31,6 +51,7 @@ namespace _1_Game.Materials
                     flyable.Fly();
                 }
             }
+
             return false;
         }
     }

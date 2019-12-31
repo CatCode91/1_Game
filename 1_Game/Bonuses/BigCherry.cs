@@ -12,9 +12,11 @@ namespace _1_Game.Bonuses
     {
         private int _helpValue = 20;
         public override int HelpValue => _helpValue;
+        public override string Color => "Бордовый";  
 
         public BigCherry(Point point) : base(point)
         {
+
         }
 
         protected override void ChangeBonus()

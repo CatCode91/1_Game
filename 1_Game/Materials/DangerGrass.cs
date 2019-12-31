@@ -8,10 +8,14 @@ namespace _1_Game.Materials
     class DangerGrass : Grass
     {
         public override string Name => "Жгучая трава";
+
         public override int LeavesCount => 33;
 
         private int _damage = 5;
         public int Damage => _damage;
+
+        private int _grassHeight = 12;
+        public override int GrassHeight => _grassHeight;
 
         public DangerGrass()
         {
@@ -33,5 +37,12 @@ namespace _1_Game.Materials
             //тут какие-нибудь чудеса для изменения величины урона
             return _damage;
         }
+
+        protected override int GrowGrass()
+        {
+            //свои условия для роста травы
+            return _grassHeight;
+        }
+
     }
 }

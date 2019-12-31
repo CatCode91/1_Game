@@ -7,6 +7,7 @@ namespace _1_Game.Materials
     public class Fire : Material
     {
         public override string Name => "Огонь!";
+
         private int _damageFromFire = 3;
         public int DamageFromFire => _damageFromFire;
 
@@ -15,7 +16,7 @@ namespace _1_Game.Materials
             DamageChanging();
         }
 
-        //можно задавать первоначальный урон от огня
+        //можно задавать первоначальный урон от огня в конструкторе
         public Fire(int damageFromFire)
         {
             _damageFromFire = damageFromFire;

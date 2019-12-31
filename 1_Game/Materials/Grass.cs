@@ -11,7 +11,7 @@ namespace _1_Game.Materials
         public virtual int LeavesCount { get; } = 1;
 
         private int _grassHeight = 5;
-        public int GrassHeight => _grassHeight;
+        public virtual int GrassHeight => _grassHeight;
 
         public override bool IsMovable(IBody obj)
         {

@@ -25,7 +25,7 @@ namespace _1_Game.Enemies
         public event MoveStateHandler Moving;
         protected void BaseClassEvent(MoveEventArgs e)
         {
-           // Moving?.Invoke(this, e);
+            Moving?.Invoke(this, e);
         }
 
         public void SetStartPosition(Point p)

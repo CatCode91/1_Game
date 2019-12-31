@@ -61,6 +61,7 @@ namespace _1_Game
         }
 
         #region Overrided operators
+
         public static Point operator +(Point p, Vector v)
         {
             return new Point {X = (p.X + v.X), Y = (p.Y + v.Y)};
@@ -78,6 +79,7 @@ namespace _1_Game
             return result = ((p1.X == p2.X) & (p1.Y == p2.Y)) ? true : false;
         }
 
+       
         public override int GetHashCode()
         {
             int hashcode = X.GetHashCode();
@@ -85,7 +87,7 @@ namespace _1_Game
             return hashcode;
         }
 
-        public override bool Equals(object obj)  //Перегрузка метода 
+        public override bool Equals(object obj) 
         {
             bool result = false;
 
