@@ -6,12 +6,12 @@ namespace _1_Game.Materials
 {
     //обычная стена, непроходима, если объект не реализует интерфейс IFLyable
     public class Wall : Material
-    {         
-        private int _height = 55;
-        public virtual int Height => _height;
-
+    {
         private string _name = "Стена";
         public override string Name => _name;
+
+        private int _height = 55;
+        public virtual int Height => _height;
 
         public Wall()
         {

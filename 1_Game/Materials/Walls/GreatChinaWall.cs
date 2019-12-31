@@ -7,24 +7,14 @@ namespace _1_Game.Materials.Walls
     //Великая китайская стена, непроходима и непролетаема, нужно договариватся
     public class GreatChinaWall : Wall
     {
-        private int _height = 100;
-        public override int Height => _height;
-
         private string _name = "Великая китайская стена!";
         public override string Name => _name;
 
+        private int _height = 100;
+        public override int Height => _height;
+
         private bool dogovor = false;
         public bool Dogovor => dogovor;
-
-        public override bool IsMovable(IBody obj)
-        {
-            // если договорится то можно пройти
-            if (dogovor)
-            {
-                return true;
-            }
-            return false;
-        }
 
         public bool PokumekatWithKitajec(object conditions)
         {
@@ -47,6 +37,16 @@ namespace _1_Game.Materials.Walls
             }
 
             return _height;
+        }
+
+        public override bool IsMovable(IBody obj)
+        {
+            // если договорится то можно пройти
+            if (dogovor)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

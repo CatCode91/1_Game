@@ -8,7 +8,6 @@ namespace _1_Game.Materials
     class DangerGrass : Grass
     {
         public override string Name => "Жгучая трава";
-
         public override int LeavesCount => 33;
 
         private int _damage = 5;

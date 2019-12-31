@@ -4,21 +4,23 @@ using System.Text;
 
 namespace _1_Game.Materials.Waters
 {
+    public enum Weather
+    {
+        Calm,
+        LightBreeze,
+        Windy,
+        Storm,
+        PolnuyKapec
+    }
+
+
     public class Sea : Water
     {
-        public enum Weather
-        {
-           Calm,
-           LightBreeze,
-           Windy,
-           Storm,
-           PolnuyKapec          
-        }
+        public override string Name => "Море";
 
         public virtual int Size => 15;
         public override int StrenchForSwim => 15;
-        public override string Name => "Море";
-
+     
         private int _wavesHeight = 1;
         public int WavesHeight => WavesHeight;
      

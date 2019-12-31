@@ -42,7 +42,6 @@ namespace _1_Game.Field
         //заполнение игрового поля материалами
         private void FieldFill(int width, int height)
         {
-
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
