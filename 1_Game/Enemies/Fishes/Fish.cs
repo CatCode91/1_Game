@@ -12,9 +12,11 @@ namespace _1_Game.Enemies
         public abstract string Color { get; }
         public abstract int Size { get; }
 
+        #region ISwimming
         public void Swim()
         {
             Console.WriteLine("Плыву!");
         }
+        #endregion
     }
 }

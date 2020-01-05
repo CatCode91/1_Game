@@ -9,6 +9,14 @@ namespace _1_Game
     {
         //в сетеррах валидируются значения, чтоб координаты не выходили за пределы окна
         private int _x;
+        private int _y;
+
+        public Point()
+        {
+            _x = 0;
+            _y = 0;
+        }
+
         public int X
         {
             get
@@ -30,8 +38,6 @@ namespace _1_Game
                 }
             }
         }
-
-        private int _y;
         public int Y
         {
             get
@@ -52,12 +58,6 @@ namespace _1_Game
                     _y = 0;
                 }
             }
-        }
-
-        public Point()
-        {
-            _x = 0;
-            _y = 0;
         }
 
         #region Overridden operators

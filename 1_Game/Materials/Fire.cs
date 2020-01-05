@@ -6,15 +6,8 @@ namespace _1_Game.Materials
 {
     public class Fire : Material
     {
-        public override string Name => "Огонь!";
-
-        //урон от огня
-        private int _damageFromFire = 3;
-        public int DamageFromFire => _damageFromFire;
-
-        //время уничтожения
         private int _timeToFire = 30;
-        public int TimeToFire => _timeToFire;
+        private int _damageFromFire = 3;
 
         public Fire()
         {
@@ -28,6 +21,11 @@ namespace _1_Game.Materials
             DamageChanging();
         }
 
+        public override string Name => "Огонь!";
+        //урон от огня
+        public int DamageFromFire => _damageFromFire;
+        //время уничтожения    
+        public int TimeToFire => _timeToFire;
         //метод сжигания материала
         public Material BurnMaterial(Material m)
         {
@@ -40,17 +38,16 @@ namespace _1_Game.Materials
             return m;
         }
 
-        //метод изменения величины урона
-        private int DamageChanging()
-        {
-            //тут какие-нибудь чудеса для изменения величины урона от огня
-            return  _damageFromFire = 3;
-        }
-
         public override bool IsMovable(IBody obj)
         {
             obj.GetDamage(DamageFromFire);
             return true;
         }
+        //метод изменения величины урона
+        private int DamageChanging()
+        {
+            //тут какие-нибудь чудеса для изменения величины урона от огня
+            return  _damageFromFire = 3;
+        }     
     }
 }

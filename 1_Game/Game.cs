@@ -10,15 +10,10 @@ namespace _1_Game
 {
     public class Game
     {
-        //размеры окна статические, передаются в класс Point для валидации координат
-        public static int Height { get; private set; } 
-        public static int Width { get; private set; }
-
         private GameField gameField;
         private Player player;
         private List<Enemy> enemies = new List<Enemy>(10);
         private List<Bonus> bonuses = new List<Bonus>(7);
-
         private GameController gameController = new GameController();
 
         public Game(int width,int height)
@@ -31,9 +26,13 @@ namespace _1_Game
             player.Moving += Player_Moving;
         }
 
+        //размеры окна статические, передаются в класс Point для валидации координат
+        public static int Height { get; private set; }
+        public static int Width { get; private set; }
+
         public void MoveController(ConsoleKey cli)
         {
-            Vector vector = gameController.DoMove(cli);
+            Vector vector = gameController.DoStep(cli);
 
             if (vector != null)
             {

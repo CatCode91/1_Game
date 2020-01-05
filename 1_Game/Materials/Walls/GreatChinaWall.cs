@@ -8,12 +8,11 @@ namespace _1_Game.Materials.Walls
     public class GreatChinaWall : Wall
     {
         private string _name = "Великая китайская стена!";
-        public override string Name => _name;
-
         private int _height = 100;
-        public override int Height => _height;
-
         private bool dogovor = false;
+
+        public override string Name => _name;
+        public override int Height => _height;
         public bool Dogovor => dogovor;
 
         public bool PokumekatWithKitajec(object conditions)
@@ -21,7 +20,6 @@ namespace _1_Game.Materials.Walls
             //тут оговариваются условия для прохождения китайской стены
             return dogovor;
         }
-
         public override int GetDamageWall(int i)
         {
             _height -= i;
@@ -38,7 +36,6 @@ namespace _1_Game.Materials.Walls
 
             return _height;
         }
-
         public override bool IsMovable(IBody obj)
         {
             // если договорится то можно пройти

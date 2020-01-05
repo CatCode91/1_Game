@@ -11,20 +11,19 @@ namespace _1_Game.Bonuses
     public class BigApple : Apple
     {
         private int _helpValue = 20;
-        public override int HelpValue => _helpValue;
-
         private int _size = 30;
-        public override int Size => _size;
 
         public BigApple(Point point) : base(point)
         {
-           
+
         }
+
+        public override int HelpValue => _helpValue;
+        public override int Size => _size;
 
         protected override void ChangeBonus()
         {
             GrowApple();
         }
-
     }
 }

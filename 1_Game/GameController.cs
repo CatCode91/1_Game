@@ -16,7 +16,7 @@ namespace _1_Game
              { ConsoleKey.RightArrow, new Vector(1,0)  },
         };
 
-        public Vector DoMove(ConsoleKey cli)
+        public Vector DoStep(ConsoleKey cli)
         {
             try
             {

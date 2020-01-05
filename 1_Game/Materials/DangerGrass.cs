@@ -5,21 +5,20 @@ using System.Text;
 namespace _1_Game.Materials
 {
     //трава наносящая урон игроку
-    class DangerGrass : Grass
+    public class DangerGrass : Grass
     {
-        public override string Name => "Жгучая трава";
-        public override int LeavesCount => 33;
-
         private int _damage = 5;
-        public int Damage => _damage;
-
         private int _grassHeight = 12;
-        public override int GrassHeight => _grassHeight;
 
         public DangerGrass()
         {
             DamageChanging();
         }
+
+        public override string Name => "Жгучая трава";
+        public override int LeavesCount => 33;
+        public int Damage => _damage;
+        public override int GrassHeight => _grassHeight;
 
         public override bool IsMovable(IBody obj)
         {
@@ -30,18 +29,19 @@ namespace _1_Game.Materials
 
             return true;
         }
-
-        private int DamageChanging() {
-
-            //тут какие-нибудь чудеса для изменения величины урона
-            return _damage;
-        }
-
         protected override int GrowGrass()
         {
             //свои условия для роста травы
             return _grassHeight;
         }
+        private int DamageChanging()
+        {
+
+            //тут какие-нибудь чудеса для изменения величины урона
+            return _damage;
+        }
+
+        
 
     }
 }

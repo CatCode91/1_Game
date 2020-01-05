@@ -11,25 +11,24 @@ namespace _1_Game.Bonuses
     public class Apple : Bonus
     {
         private int _helpValue = 7;
-        public override int HelpValue => _helpValue;
-
         private int _size = 30;
-        public virtual int Size => _size;
 
         public Apple(Point point) : base(point)
         {
+
         }
+
+        public override int HelpValue => _helpValue;
+        public virtual int Size => _size;
 
         public override void ApplyBonus(Player p)
         {
             p.SetHealth(HelpValue);
         }
-
         protected override void ChangeBonus()
         {
             GrowApple();
         }
-
         protected async void GrowApple()
         {
             while (HelpValue <= 50)

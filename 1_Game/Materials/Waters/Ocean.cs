@@ -8,18 +8,16 @@ namespace _1_Game.Materials.Waters
 {
     public class Ocean : Sea
     {
+        private Bonus _bonus = new Apple(new Point());
+
         public override string Name => "Океан";
         public override int StrenchForSwim => 15;
-
         public int Deep { get; } = 80;
-
-        private Bonus _bonus;
         public Bonus SecretBonus  => _bonus;
      
-        protected virtual void SetBonus(Point p)
+        protected virtual void ChangeBonus()
         {
-            //клетка из этого материала может содержать скрытый бонус
-            _bonus = new Apple(p);
+            //изменить бонус в клетке
         }
     }
 }

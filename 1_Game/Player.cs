@@ -7,14 +7,13 @@ namespace _1_Game
 {
     public class Player : IMovable, IBody
     {
+        public Point Point { get; private set; } = new Point();
+        public event MoveStateHandler Moving;
+
+        #region IBody
         public int Health { get; private set; } = 100;
         public int Strench { get; private set; } = 100;
         public int Weight { get; private set; } = 7;
-
-        public Point Point { get; private set; } = new Point();
-
-        public event MoveStateHandler Moving;
-
         public void GetDamage(int i)
         {
             Health -= i;
@@ -46,7 +45,9 @@ namespace _1_Game
                 Strench = 0;
             }
         }
+        #endregion
 
+        #region IMovable
         public void Move(Vector vector, Material material)
         {
             if (material.IsMovable(this))
@@ -59,5 +60,6 @@ namespace _1_Game
                 Moving?.Invoke(this, new MoveEventArgs(Point, $"{material.GetType()} - непроходимый материал"));
             }
         }
+        #endregion
     }
 }

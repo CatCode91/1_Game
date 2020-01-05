@@ -8,26 +8,21 @@ namespace _1_Game.Enemies
 {
     public abstract class Enemy : IBody, IMovable
     {
-        public abstract int DamageValue { get; }
-        
+        protected int EnemyWeight = 10;
+        protected int EnemyStrench = 10;
+        protected int EnemyHealth = 10;
+
         //Point set protected, чтоб можно было переопределять метод Move в наследниках
         public Point Point { get; protected set; }
 
-        protected  int EnemyHealth = 10;
         public int Health => EnemyHealth;
-
-        protected int EnemyStrench = 10;
         public int Strench => EnemyStrench;
-
-        protected int EnemyWeight = 10;
         public int Weight => EnemyWeight;
 
-        public event MoveStateHandler Moving;
-        protected void BaseClassEvent(MoveEventArgs e)
-        {
-            Moving?.Invoke(this, e);
-        }
+        public abstract int DamageValue { get; }
 
+        public event MoveStateHandler Moving;
+       
         public void SetStartPosition(Point p)
         {
             Point = p;
@@ -87,6 +82,11 @@ namespace _1_Game.Enemies
             {
                 Moving?.Invoke(this, new MoveEventArgs(Point, $"{material.GetType()} - непроходимый материал"));
             }
+        }
+
+        protected void BaseClassEvent(MoveEventArgs e)
+        {
+            Moving?.Invoke(this, e);
         }
     }
 }

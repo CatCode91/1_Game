@@ -8,20 +8,19 @@ namespace _1_Game.Materials
     public class Wall : Material
     {
         private string _name = "Стена";
-        public override string Name => _name;
-
         private int _height = 55;
-        public virtual int Height => _height;
 
         public Wall()
         {
 
         }
-
         public Wall(int height)
         {
             _height = height;
         }
+
+        public override string Name => _name;
+        public virtual int Height => _height;
 
         public virtual int GetDamageWall(int i)
         {
@@ -39,7 +38,6 @@ namespace _1_Game.Materials
 
             return _height;
         }
-
         public override bool IsMovable(IBody obj)
         {
             if (obj is IFlyable)

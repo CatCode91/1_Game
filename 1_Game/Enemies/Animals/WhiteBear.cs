@@ -15,9 +15,11 @@ namespace _1_Game.Enemies.Animals
             Console.WriteLine("Рррыыыр! Я белый медведь!!");
         }
 
+        #region ISwimming
         public void Swim()
         {
             Console.WriteLine("Плыву!");
         }
+        #endregion
     }
 }

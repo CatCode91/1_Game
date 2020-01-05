@@ -9,7 +9,6 @@ namespace _1_Game.Materials
     public class Water : Material
     {
         public override string Name => "Вода";
-
         public virtual int StrenchForSwim => 12;
 
         public override bool IsMovable(IBody obj)

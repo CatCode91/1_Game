@@ -8,9 +8,6 @@ namespace _1_Game.Enemies
 {
     public class Dragon : Enemy,  IFlyable
     {
-        public override int DamageValue => 10;
-        public int FlyingHeight => 10;
-
         public Dragon()
         {
             EnemyHealth = 100;
@@ -18,14 +15,14 @@ namespace _1_Game.Enemies
             EnemyWeight = 70;
         }
 
+        public override int DamageValue => 10;
+        public int FlyingHeight => 10;
+
+        #region IFlyable
         public void Fly()
         {
             Console.WriteLine("Лечу!");
         }
-       
-        public override void SetDamage(Player p)
-        {
-            p.GetDamage(DamageValue);
-        }
+        #endregion   
     }
 }

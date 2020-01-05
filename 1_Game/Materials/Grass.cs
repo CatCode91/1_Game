@@ -6,11 +6,10 @@ namespace _1_Game.Materials
 {
     public class Grass : Material
     {
-        public override string Name => "Трава";
-
-        public virtual int LeavesCount { get; } = 1;
-
         private int _grassHeight = 5;
+
+        public override string Name => "Трава";
+        public virtual int LeavesCount => 1;
         public virtual int GrassHeight => _grassHeight;
 
         public override bool IsMovable(IBody obj)
@@ -22,7 +21,6 @@ namespace _1_Game.Materials
 
             return true;
         }
-
         protected virtual int GrowGrass()
         {  
             //тут что-происходит с ростом травы))

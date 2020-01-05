@@ -11,19 +11,19 @@ namespace _1_Game.Bonuses
     public class BigCherry : Cherry
     {
         private int _helpValue = 20;
-        public override int HelpValue => _helpValue;
-        public override string Color => "Бордовый";  
-
+        
         public BigCherry(Point point) : base(point)
         {
 
         }
 
+        public override int HelpValue => _helpValue;
+        public override string Color => "Бордовый";
+
         protected override void ChangeBonus()
         {
             Grow();
         }
-
         private async void Grow()
         {
             while (HelpValue <= 100)
